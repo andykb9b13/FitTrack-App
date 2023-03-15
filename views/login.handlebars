@@ -1,25 +1,28 @@
 <div class="container-fluid mt-4">
-    <div class="col-lg-4 mx-auto">
-      <h2>Login to your fitness journey..</h2>
+    <div class="card info-card p-4 col-lg-4 mx-auto">
+      <div>
+        <img src="/assets/images/branding/FITTRACK_SYMBOL_NAVY.png" class="mx-auto d-block">
+      </div>
+      <h2 class="text-white">Login to your fitness journey..</h2>
       <form>
-        <div class="mb-3">
+        <div class="mb-3 input-card p-2">
           <label for="email" class="form-label">Email</label>
           <input
             type="email"
-            class="form-control"
+            placeholder="example@exmpl.com"
+            class="form-control border-0 inp"
             id="email"
             aria-describedby="emailHelp"
           />
-    
-        <div class="mb-3">
+        </div>
+        <div class="mb-3 input-card p-2">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" />
+          <input type="password" placeholder="*********" class="form-control border-0 inp" id="password" />
         </div>
         <div class="mb-3 form-check">
         </div>
       </form>
-    </div>
-    <div class="mb-3 form-check">
+      <div class="mb-3 form-check">
       <button
         type="submit"
         class="btn btn-primary"
@@ -30,6 +33,7 @@
         class="btn btn-primary"
         id="signupBtn"
       >Signup</button>
+    </div>
     </div>
   </form>
 </div>
