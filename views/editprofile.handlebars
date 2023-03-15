@@ -1,25 +1,49 @@
 <div id="editprofile">
-   <h2>Edit Your Profile</h2>
-    <form>
-      <!--Image upload to eventually go here--> 
-        <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Age</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="age-input">
-        </div>
-        <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Location</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="location-input">
-        </div>
-        <h3>Basic Health Information</h3>
-        <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Height</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="height-input">
-        </div>
-        <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Starting Weight</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="starting-weight-input">
-        </div>
-        {{!-- <div class="form-floating">
+  <h2>Edit Your Profile</h2>
+  <form>
+    <!--Image upload to eventually go here-->
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Age</span>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-sm"
+        id="age-input"
+      />
+    </div>
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Location</span>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-sm"
+        id="location-input"
+      />
+    </div>
+    <h3>Basic Health Information</h3>
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Height</span>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-sm"
+        id="height-input"
+      />
+    </div>
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Starting Weight</span>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-sm"
+        id="starting-weight-input"
+      />
+    </div>
+    {{! <div class="form-floating">
           <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
             <option selected>Select Your Current Fitness Level</option>
             <option value="1">Couch Potato</option>
@@ -29,7 +53,11 @@
             <option value="5">Somewhat of a Professional</option>
           </select>
           <label for="floatingSelect">Please choose</label>
-        </div> --}}
-    </form>
+        </div> }}
+    <button class="btn btn-primary" id="saveProfileBtn">Save Profile</button>
+    <button class="btn btn-primary" id="cancelChangesBtn">Cancel Changes</button>
+  </form>
 
 </div>
+
+<script src="/js/editprofile.js"></script>
