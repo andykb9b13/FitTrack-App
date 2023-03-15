@@ -3,8 +3,7 @@ h1 {
 }
 
 .navbar-brand img {
-  height: 50px;
-  /* put value of image height as your need */
+  height: 25px;
   float: left;
   margin-right: 7px;
 }
