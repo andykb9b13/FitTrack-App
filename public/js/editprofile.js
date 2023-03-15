@@ -9,7 +9,7 @@ const saveProfileForm = async function (event) {
   const response = await fetch("/api/user/edit/profile", {
     method: "POST",
     body: JSON.stringify({
-      name: ageEl.value,
+      age: ageEl.value,
       location: locationEl.value,
       height: heightEl.value,
       starting_weight: startingWeightEl.value,

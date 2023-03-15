@@ -11,7 +11,6 @@ router.get("/", async (req, res) => {
 });
 
 // getting the profile page with user info
-// There's a problem with this function when it get called after signing up.
 router.get("/profile", async (req, res) => {
   try {
     console.log(req.session);
@@ -19,9 +18,11 @@ router.get("/profile", async (req, res) => {
       where: {
         user_id: req.session.userId,
       },
+      include: [Profile],
     });
     console.log("this is the user", user);
     const userData = user.get({ plain: true });
+    console.log("This is USERDATA", userData);
     // We should get the activity data here maybe and send it to the frontend js?
     res.render("profilecard", { userData });
   } catch (err) {

@@ -1,3 +1,13 @@
 h1 {
   text-align: center;
 }
+
+.navbar-brand img {
+  height: 25px;
+  float: left;
+  margin-right: 7px;
+}
+
+body {
+  background-color: #132542;
+}
