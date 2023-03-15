@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../Models/User");
+const Profile = require("../Models/Profile");
 
 // getting the profile page with user info
 // There's a problem with this function when it get called after signing up.
@@ -20,21 +21,6 @@ router.get("/profile", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-// router.get("/profile", async (req, res) => {
-//   try {
-//     const activities = await Activity.findAll({
-//       where: {
-//         user_id: req.session.userId,
-//       },
-//     });
-//     const activityArr = activities.map((a) => a.get({ plain: true }));
-//     console.log(activityArr);
-//     res.render("activityGraph", activityArr);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 // hitting the activitylog page
 router.get("/activity", async (req, res) => {
@@ -63,9 +49,9 @@ router.get("/login", async (req, res) => {
   }
 });
 
-router.get("/log", async (req, res) => {
+router.get("/edit", async (req, res) => {
   try {
-    res.status(200).render("activitylog");
+    res.status(200).render("editprofile");
   } catch (err) {
     res.status(500).json(err);
   }

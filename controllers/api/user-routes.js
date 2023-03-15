@@ -2,24 +2,11 @@ const router = require("express").Router();
 // changed { User } to User and changed /models to /Models/User
 const User = require("../../Models/User");
 const Activity = require("../../Models/Activitylog");
+const Profile = require("../../Models/Profile");
 
 // api/user route
 
-router.get("/id/:id", async (req, res) => {
-  try {
-    const user = await User.findOne({
-      where: {
-        user_id: req.params.id,
-      },
-    });
-    // const userData = user.map((u) => u.get({ plain: true }));
-    res.status(200).json(user);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// getting all users to send to frontend
+// getting all users, mainly for viewing in Insomnia for now
 router.get("/", async (req, res) => {
   try {
     const allUsers = await User.findAll();
@@ -29,6 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// getting all activities, mainly for viewing in Insomnia for now
 router.get("/activities", async (req, res) => {
   const allActivities = await Activity.findAll();
   res.status(200).json(allActivities);
@@ -102,9 +90,8 @@ router.post("/logout", (req, res) => {
   }
 });
 
+// ading a new activity
 router.post("/add/newActivity", async (req, res) => {
-  console.log("hitting api/user/newActivity post route");
-  console.log("this is the req.session", req.session);
   try {
     await Activity.create({
       user_id: req.session.userId,
@@ -117,5 +104,66 @@ router.post("/add/newActivity", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// getting all profiles, mainly for viewing in Insomnia for now
+router.get("/edit/profile", async (req, res) => {
+  try {
+    const allProfiles = await Profile.findAll();
+    const profileData = allProfiles.map((p) => p.get({ plain: true }));
+    res.status(200).json(profileData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// create a new user profile
+router.post("/edit/profile", async (req, res) => {
+  try {
+    const response = await Profile.create({
+      user_id: req.session.userId,
+      age: req.body.age,
+      location: req.body.location,
+      height: req.body.height,
+      starting_weight: req.body.starting_weight,
+    });
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// edit an existing user profile (still needs work)
+router.put("/edit", async (req, res) => {
+  try {
+    const [affectedRows] = await Profile.update(req.body, {
+      where: {
+        user_id: req.session.userId,
+      },
+    });
+
+    if (affectedRows > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
+    }
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// router.get("/id/:id", async (req, res) => {
+//   try {
+//     const user = await User.findOne({
+//       where: {
+//         user_id: req.params.id,
+//       },
+//     });
+//     // const userData = user.map((u) => u.get({ plain: true }));
+//     res.status(200).json(user);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
