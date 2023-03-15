@@ -1,16 +1,9 @@
 <div class="container">
   <h2>Enter your activity</h2>
-    <div id="calendar">
-      <span class="input-group-text" id="inputGroup-sizing-sm">Enter a date
-        YYYY-MM-DD</span>
-      <input
-        type="text"
-        class="form-control"
-        id="date"
-        aria-label="Sizing example input"
-        aria-describedby="inputGroup-sizing-sm"
-      />
-    </div>
+  <div class="input-group input-group-sm row"></div>
+    <form action="/action_page.php">
+      <label for="Date">Date:</label>
+      <input type="date" id="date" name="date">
     {{! <div class="form-floating">
       <label for="activitySelect">Please choose an activity</label>
       <select
@@ -25,7 +18,6 @@
       </select>
 
     </div> }}
-    <div class="input-group input-group-sm mb-3">
       <span
         class="input-group-text"
         id="durationLabel"
@@ -37,8 +29,6 @@
         aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-sm"
       />
-    </div>
-    <div class="input-group input-group-sm mb-3">
       <span
         class="input-group-text"
         id="inputGroup-sizing-sm"
@@ -50,7 +40,6 @@
         aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-sm"
       />
-    </div>
     {{! <div class="form-floating">
       <select
         class="form-select"
@@ -66,7 +55,6 @@
       </select>
       <label for="intensity">Please choose intensity</label>
     </div> }}
-    <div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="inputGroup-sizing-sm">Weigh
         In:(optional)</span>
       <input
@@ -75,7 +63,6 @@
         aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-sm"
       />
-    </div>
     <button type="submit" class="btn btn-primary" id="saveBtn">Save</button>
     <button type="submit" class="btn btn-primary" id="profileBtn">Back to
       Profile</button>

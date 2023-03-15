@@ -3,17 +3,9 @@
 <section class="container-fluid space-between p-4 row ps-2">
 <!-- Container for profile-pic -->
 <div class="col-md-4 col-sm-12 mx-auto pr-1 border" id="user-profile-card">
-  <a href="#" class ="row justify-content-end text-decoration-none" >
-  <i class="fa-solid fa-gear fa-3x p-3 " id="edit-profile"></i>
-  </a>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png" class="card-img-top mw-25 p-4" alt="profile-image">
-    <div class="card-body">
-      <h2 class="card-title">{{userData.name}}</h2>
-      <h4 class="card-text">Location Placeholder{{userData.location}}</h3>
-      <p class="card-text">Height: {{userData.height}} </p>
-      <p class="card-text">Starting Weight: {{userData.starting_weight}} </p>
-    </div>
- </div>
+{{> profileDisplay}}
+</div>
+</div>
         <div class="col-md-8 col-sm-12 border p-5 mx-auto" id="chart-display">
             <div class="row justify-content-end">
                 <button class="btn btn-outline-secondary" id="activityBtn">+ Log Activity</button>
