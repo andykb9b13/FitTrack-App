@@ -1,26 +1,19 @@
- <!-- If logged in main body of site -->
-    <section class="container-fluid mt-4">
-        <div class="row">
-            <!-- Container for profile-pic -->
-            <div class="col-lg-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png" class="card-img-top" alt="profile-image">
-                    <div class="card-body">
-                    <h2 class ="card-title">{{user.name}}</h2>
-                    <p class="card-text">Height: </p>
-                    <p class="card-text">{{user.height}}</p>
-                    <p class="card-text">Weight: </p>
-                    <p class="card-text">{{user.weight}}</p>
-                    <p class="card-text">Location:</p>
-                    <p class="card-text">{{user.location}}</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-8">
-                {{> activityGraph}}
+<!-- If logged in main body of site -->
+<section class="container-fluid space-between p-4 row ps-2">
+<!-- Container for profile-pic -->
+<div class="col-md-4 col-sm-12 mx-auto pr-1 border" id="user-profile-card">
+{{> profileDisplay}}
+</div>
+</div>
+        <div class="col-md-8 col-sm-12 border p-5 mx-auto" id="chart-display">
+            <div class="row justify-content-end">
+                <button class="btn btn-outline-secondary" id="activityBtn">+ Log Activity</button>
             </div>
+                    {{> activityGraph}}
         </div>
-    </section>
+</section>
+
+<script src="/js/profile.js"></script>
 
     

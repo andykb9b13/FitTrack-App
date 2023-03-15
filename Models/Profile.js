@@ -24,13 +24,14 @@ Profile.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    fitness_level: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    // fitness_level: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
   },
   {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "profile",

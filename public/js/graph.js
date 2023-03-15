@@ -4,9 +4,11 @@ const ctx = document.getElementById("activityGraph");
 
 const getActivities = async () => {
   try {
-    const response = await fetch("/api/graph/activities");
-    const data = response.json();
-    return data;
+    const response = await fetch("/api/graph/all/activities", {
+      method: "GET",
+    });
+    console.log("This is the response for getActivities", response);
+    return response.json();
   } catch (err) {
     console.log(err);
   }
@@ -34,18 +36,18 @@ const activityData = async () => {
           label: "Duration",
           data: data.map((row) => row.duration),
           borderWidth: 2,
-          borderColor: 'rgb(170, 74, 68)',
-          backgroundColor: 'rgb(170, 74, 68)',
-          type: 'line',
-          order: 0
+          borderColor: "rgb(170, 74, 68)",
+          backgroundColor: "rgb(170, 74, 68)",
+          type: "line",
+          order: 0,
         },
         {
           label: "Distance",
           data: data.map((row) => row.distance),
           borderWidth: 2,
-          backgroundColor: 'rgb(0, 0, 255, 0.7)',
-          order: 1
-        }
+          backgroundColor: "rgb(0, 0, 255, 0.7)",
+          order: 1,
+        },
       ],
     },
     options: {
@@ -54,8 +56,8 @@ const activityData = async () => {
           display: true,
           positon: "top",
           align: "center",
-          text: "Your Weekly Fitness!"
-        }
+          text: "Your Weekly Fitness!",
+        },
       },
       scales: {
         y: {
@@ -64,14 +66,14 @@ const activityData = async () => {
           title: {
             display: true,
             text: "Time (Minutes)",
-          }
+          },
         },
         x: {
           title: {
             display: true,
-            text: "Date (yyyy-mm-d)",
-          }
-        }
+            text: "Date (YYYY/MM/DD)",
+          },
+        },
       },
     },
   });

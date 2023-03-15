@@ -22,10 +22,10 @@ Activity.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    activity_type: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
+    // activity_type: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false,
+    // },
     duration: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -34,14 +34,14 @@ Activity.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    intensity: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    // intensity: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "activity",

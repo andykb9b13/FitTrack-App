@@ -1,91 +1,42 @@
-<div>
-  <form>
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <h2>Personal Information</h2>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" />
-          </div>
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" />
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="text" class="form-control" id="password" />
-          </div>
-          {{!-- <div class="mb-3">
-            <label for="first-name" class="form-label">First name</label>
-            <input type="text" class="form-control" id="first-name" />
-          </div>
-          <div class="mb-3">
-            <label for="last-name" class="form-label">Last name</label>
-            <input type="text" class="form-control" id="last-name" />
-          </div>
-          <div class="mb-3">
-            <label for="location" class="form-label">Location</label>
-            <input type="text" class="form-control" id="location" />
-          </div>
-        </div> --}}
+<div class="container-fluid mt-4">
+  <div class="col-lg-4 mx-auto">
+    <form>
+      <div class="container mt-4 mb-4">
+        <div class="row">
+          <div>
+            <h2>Create an Account</h2>
 
-        {{!-- <div class="col-6">
-          <h2>Basic Health Info</h2>
-          <div class="mb-3">
-            <label for="age" class="form-label">Age</label>
-            <input type="text" class="form-control" id="age" />
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" />
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="text" class="form-control" id="password" />
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary mx-auto"
+              id="signupBtn"
+            >Signup</button>
+            <button
+              type="submit"
+              class="btn btn-primary mx-auto"
+              id="loginBtn"
+            >Login</button>
+
           </div>
-          <div class="mb-3">
-            <label for="height" class="form-label">Height</label>
-            <input type="email" class="form-control" id="height" />
-          </div>
-          <div class="mb-5">
-            <label for="weight" class="form-label">Weight</label>
-            <input type="text" class="form-control" id="weight" />
-          </div>
-          <div class="form-floating mb-4">
-            <select
-              class="form-select"
-              id="fitness-level"
-              aria-label="fitness select"
-            >
-              <option selected>Select Your Current Fitness Level</option>
-              <option value="1">Couch Potato</option>
-              <option value="2">Sunday Walker</option>
-              <option value="3">Not Afraid to Sweat</option>
-              <option value="4">See Me at the Gym</option>
-              <option value="5">Somewhat of a Professional</option>
-            </select>
-          </div>
-          <div class="form-floating mb-3">
-            <select
-              class="form-select"
-              id="fitness-goal"
-              aria-label="fitness goal"
-            >
-              <option selected>Select Your Desired Fitness Level</option>
-              <option value="1">Couch Potato</option>
-              <option value="2">Sunday Walker</option>
-              <option value="3">Not Afraid to Sweat</option>
-              <option value="4">See Me at the Gym</option>
-              <option value="5">Somewhat of a Professional</option>
-            </select>
-          </div>
-        </div> --}}
+
+        </div>
+
       </div>
-    </div>
-    <button
-      type="submit"
-      class="btn btn-primary"
-      id="signupBtn"
-    >Signup</button>
-     <button
-      type="submit"
-      class="btn btn-primary"
-      id="loginBtn"
-    >Login</button>
-  </form>
+    </form>
+  </div>
 </div>
 
 <script src="/js/signup.js"></script>

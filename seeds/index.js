@@ -3,7 +3,8 @@ const sequelize = require("../config/connection");
 const userSeedData = require("./userAccountData");
 const profileSeedData = require("./profileData");
 const activitySeedData = require("./activityLogData");
-const goalSeedData = require("./goalData");
+// const goalSeedData = require("./goalData");
+
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -14,7 +15,7 @@ const seedDatabase = async () => {
 
   await activitySeedData();
 
-  await goalSeedData();
+  // await goalSeedData();
 
   //   const users = await User.bulkCreate(userSeedData,{
   //     individualHooks: true,

@@ -17,7 +17,9 @@ const loginFormHandler = async (event) => {
     console.log("this is the response", response);
 
     if (response.ok) {
+      // sessionStorage.setItem("email", email);
       document.location.replace("/profile");
+
       alert("Login Successful");
     } else {
       alert("Login failed");
