@@ -1,3 +1,14 @@
 h1 {
   text-align: center;
 }
+
+.navbar-brand img {
+  height: 50px;
+  /* put value of image height as your need */
+  float: left;
+  margin-right: 7px;
+}
+
+body {
+  background-color: #132542;
+}

@@ -18,6 +18,9 @@
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     ></script>
     <script src="https://kit.fontawesome.com/fa5fa2c0d0.js" crossorigin="anonymous"></script>
+    {{#each css}}
+        <link rel="stylesheet" href="/css/{{this}}">
+    {{/each}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <title>FitTrack</title>
@@ -25,7 +28,7 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/profile"><img src="assets/images/branding/FITTRACK_SYMBOL_NAVY.png"></a>
+      <a class="navbar-brand" href="/profile"><img src="https://i.ibb.co/PzFT4PR/FITTRACK-SYMBOL-NAVY.png" class="img-fluid h-50"></a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
@@ -37,7 +40,9 @@
     </nav>
 
     {{{body}}}
-
+    {{#each js}}
+        <script src="/js/{{this}}"></script>
+    {{/each}}
   <script src="/js/main.js"></script>
   </body>
 </html>
