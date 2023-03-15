@@ -71,7 +71,7 @@ const activityData = async () => {
         x: {
           title: {
             display: true,
-            text: "Date (yyyy-mm-d)",
+            text: "Date (YYYY/MM/DD)",
           },
         },
       },
