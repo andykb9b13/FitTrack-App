@@ -98,6 +98,7 @@ router.post("/add/newActivity", async (req, res) => {
       entry_date: req.body.entry_date,
       duration: req.body.duration,
       distance: req.body.distance,
+      activity_type: req.body.activity_type,
     });
     res.status(200).json("activity created");
   } catch (err) {

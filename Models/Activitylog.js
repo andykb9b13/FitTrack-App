@@ -22,10 +22,10 @@ Activity.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // activity_type: {
-    //   type: DataTypes.TEXT,
-    //   allowNull: false,
-    // },
+    activity_type: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     duration: {
       type: DataTypes.INTEGER,
       allowNull: false,

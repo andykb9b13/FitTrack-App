@@ -1,75 +1,77 @@
-<div class="activity container-fluid">
-  <div class="info-card pt-1 pb-1 pl-3 pr-3 text-center">
-    <h2>Enter your activity</h2>
-      <form action="/action_page.php">
-        <label for="Date">Date:</label>
-        <input type="date" id="date" name="date">
-      {{! <div class="form-floating">
-        <label for="activitySelect">Please choose an activity</label>
-        <select
-          class="form-select"
-          id="activitySelect"
-          aria-label="Floating label select example"
-        >
-          <option selected>Select Your Activity</option>
-          <option value="Running">Running</option>
-          <option value="Biking">Biking</option>
-          <option value="Swi">Swimming</option>
-        </select>
+<div class="container">
+  <h2>Enter your activity</h2>
+  <div class="input-group input-group-sm row"></div>
+  <form action="/action_page.php">
+    <label for="Date">Date:</label>
+    <input type="date" id="date" name="date" />
+    {{! <div class="form-floating">
+      <label for="activitySelect">Please choose an activity</label>
+      <select
+        class="form-select"
+        id="activitySelect"
+        aria-label="Floating label select example"
+      >
+        <option selected>Select Your Activity</option>
+        <option value="Running">Running</option>
+        <option value="Biking">Biking</option>
+        <option value="Swi">Swimming</option>
+      </select>
 
-      </div> }}
-        <span
-          class="input-group-text"
-          id="durationLabel"
-        >Duration(minutes):</span>
-        <input
-          type="text"
-          class="form-control"
-          id="duration"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-        />
-        <span
-          class="input-group-text"
-          id="inputGroup-sizing-sm"
-        >Distance(miles):</span>
-        <input
-          type="text"
-          class="form-control"
-          id="distance"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-        />
-      {{! <div class="form-floating">
-        <select
-          class="form-select"
-          id="intensity"
-          aria-label="Floating label select example"
-        >
-          <option selected>Select Intensity Level</option>
-          <option value="1">1 - Some heavy breathing...</option>
-          <option value="2">2 - Things were heating up...</option>
-          <option value="3">3 - Got my sweat on!</option>
-          <option value="4">4 - Feel the high!</option>
-          <option value="5">5 - No one can stop me!!</option>
-        </select>
-        <label for="intensity">Please choose intensity</label>
-      </div> }}
-        <span class="input-group-text" id="inputGroup-sizing-sm">Weigh
-          In:(optional)</span>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-        />
-      <div class="pt-2">
-        <button type="submit" class="btn btn-primary" id="saveBtn">Save</button>
-        <button type="submit" class="btn btn-primary" id="profileBtn">Back to
-          Profile</button>
-      </div>
-    </form>
-  </div>
+    </div> }}
+    <span class="input-group-text" id="activityLabel">Activity Type:</span>
+    <input
+      type="text"
+      class="form-control"
+      id="activity"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-sm"
+    />
+    <span class="input-group-text" id="durationLabel">Duration(minutes):</span>
+    <input
+      type="text"
+      class="form-control"
+      id="duration"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-sm"
+    />
+    <span
+      class="input-group-text"
+      id="inputGroup-sizing-sm"
+    >Distance(miles):</span>
+    <input
+      type="text"
+      class="form-control"
+      id="distance"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-sm"
+    />
+    {{! <div class="form-floating">
+      <select
+        class="form-select"
+        id="intensity"
+        aria-label="Floating label select example"
+      >
+        <option selected>Select Intensity Level</option>
+        <option value="1">1 - Some heavy breathing...</option>
+        <option value="2">2 - Things were heating up...</option>
+        <option value="3">3 - Got my sweat on!</option>
+        <option value="4">4 - Feel the high!</option>
+        <option value="5">5 - No one can stop me!!</option>
+      </select>
+      <label for="intensity">Please choose intensity</label>
+    </div> }}
+    <span class="input-group-text" id="inputGroup-sizing-sm">Weigh In:(optional)</span>
+    <input
+      type="text"
+      class="form-control"
+      id="weight"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-sm"
+    />
+    <button type="submit" class="btn btn-primary" id="saveBtn">Save</button>
+    <button type="submit" class="btn btn-primary" id="profileBtn">Back to
+      Profile</button>
+  </form>
 </div>
 
 <script src="/js/activitylog.js"></script>

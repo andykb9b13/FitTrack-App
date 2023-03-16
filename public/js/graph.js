@@ -1,6 +1,12 @@
-const ctx = document.getElementById("activityGraph");
+const ctx = document.getElementById("activityGraph").getContext("2d");
 // const second = document.getElementById("secondChart");
 // const third = document.getElementById("thirdChart");
+let activityChart = new Chart(ctx, {
+  type: "bar",
+  data: {
+    datasets: [],
+  },
+});
 
 const getActivities = async () => {
   try {
@@ -8,26 +14,17 @@ const getActivities = async () => {
       method: "GET",
     });
     console.log("This is the response for getActivities", response);
-    return response.json();
+    const data = response.json();
+    activityData(data);
   } catch (err) {
     console.log(err);
   }
 };
 
-// const getGoals = async () => {
-//   try {
-//     const response = await fetch("/api/graph/goals");
-//     const data = response.json();
-//     return data;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
-const activityData = async () => {
-  const data = await getActivities();
-  console.log(data);
-  new Chart(ctx, {
+const activityData = async (userData) => {
+  const data = await userData;
+  activityChart.destroy();
+  activityChart = new Chart(ctx, {
     type: "bar",
     data: {
       labels: data.map((row) => row.entry_date),
@@ -79,42 +76,53 @@ const activityData = async () => {
   });
 };
 
-activityData();
+getActivities();
 
-// const goalsData = async () => {
-//   const data = await getGoals();
-//   new Chart(second, {
-//     type: "bar",
-//     data: {
-//       labels: data.map((row) => row.activity_type),
-//       datasets: [
-//         {
-//           label: "duration",
-//           data: data.map((row) => row.duration),
-//           borderWidth: 1,
-//         },
-//       ],
-//     },
-//   });
-// };
+// TODO can I combine the three routes to use string literal to input a parameter into the http request?
+const getRunningData = async () => {
+  try {
+    const response = await fetch("/api/graph/running", {
+      method: "GET",
+    });
+    const data = response.json();
+    console.log("This is the data from getRunningData", data);
+    activityData(data);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-// goalsData();
+const getSwimmingData = async () => {
+  try {
+    const response = await fetch("/api/graph/swimming", {
+      method: "GET",
+    });
+    const data = response.json();
+    console.log("This is the data from getRunningData", data);
+    activityData(data);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-// const myData3 = async () => {
-//   const data = await getData();
-//   new Chart(third, {
-//     type: "polarArea",
-//     data: {
-//       labels: data.map((row) => row.entry_date),
-//       datasets: [
-//         {
-//           label: "duration",
-//           data: data.map((row) => row.duration),
-//           borderWidth: 1,
-//         },
-//       ],
-//     },
-//   });
-// };
+const getBikingData = async () => {
+  try {
+    const response = await fetch("/api/graph/biking", {
+      method: "GET",
+    });
+    const data = response.json();
+    console.log("This is the data from getRunningData", data);
+    activityData(data);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-// myData3();
+document
+  .querySelector("#allActivitiesBtn")
+  .addEventListener("click", getActivities);
+document.querySelector("#runningBtn").addEventListener("click", getRunningData);
+document
+  .querySelector("#swimmingBtn")
+  .addEventListener("click", getSwimmingData);
+document.querySelector("#bikingBtn").addEventListener("click", getBikingData);
