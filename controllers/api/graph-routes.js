@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Activity, Goals, Profile, User } = require("../../Models");
 
 // getting array of activities to send to frontend
-router.get("/all/activities", async (req, res) => {
+router.get("/all", async (req, res) => {
   try {
     const activities = await Activity.findAll({
       where: {
