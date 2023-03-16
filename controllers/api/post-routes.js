@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const Activity = require("../../Models/Activitylog");
 const withAuth = require("../../utils/auth");
+const uploadController = require("../../controllers/upload");
+const upload = require("../../middleware/upload");
 
 router.post("/newActivity", withAuth, async (req, res) => {
   const body = req.body;
@@ -19,6 +21,7 @@ router.post("/newActivity", withAuth, async (req, res) => {
   }
 });
 
+router.post("/upload", upload.single("file"), uploadController.uploadFiles);
 // router.put("/:id", withAuth, async (req, res) => {
 //   try {
 //     const [affectedRows] = await Post.update(req.body, {
