@@ -1,6 +1,8 @@
 <div class="d-flex align-items-center mt-4 centering-container">
   <div class="card info-card p-4 col-md-4 mx-auto max-width-500">
     <h2 class="mb-4 text-center">Create an Account</h2>
+  <div class="card info-card p-4 col-md-4 mx-auto max-width-500">
+    <h2 class="mb-4 text-center">Create an Account</h2>
     <form>
       <div class="mb-4 input-card p-2">
         <label for="email" class="form-label pl-2">Email address</label>
@@ -13,11 +15,23 @@
       <div class="mb-4 input-card p-2">
         <label for="password" class="form-label pl-2">Password</label>
         <input type="text" placeholder="*********" class="form-control border-0 inp" id="password" />
+      <div class="mb-4 input-card p-2">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" placeholder="example@exmpl.com" class="form-control border-0 inp" id="email" />
+      </div>
+      <div class="mb-4 input-card p-2">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" placeholder="Bobby Bobson" class="form-control border-0 inp" id="name" />
+      </div>
+      <div class="mb-4 input-card p-2">
+        <label for="password" class="form-label">Password</label>
+        <input type="text" placeholder="*********" class="form-control border-0 inp" id="password" />
       </div>
     </form>
     <div class="mb-3 form-check text-center pr-3">
-      <button type="submit" class="btn btn-primary mx-auto" id="signupBtn">Signup</button>
-      <button type="submit" class="btn btn-primary mx-auto" id="loginBtn">Login</button>
+      <button type="submit" class="btn btn-primary mx-auto" id="signupBtn">Create Account</button><br><br>
+      <span class="mr-2">Already have a FitTrack account?</span><br>
+      <a href="/login" class="btn btn-link" id="loginlink">Sign In</a>
     </div>
   </div>
 </div>

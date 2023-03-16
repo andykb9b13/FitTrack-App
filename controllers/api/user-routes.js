@@ -3,6 +3,7 @@ const router = require("express").Router();
 const User = require("../../Models/User");
 const Activity = require("../../Models/Activitylog");
 const Profile = require("../../Models/Profile");
+const withAuth = require("../../utils/auth");
 
 // api/user route
 
@@ -91,13 +92,14 @@ router.post("/logout", (req, res) => {
 });
 
 // ading a new activity
-router.post("/add/newActivity", async (req, res) => {
+router.post("/activity", withAuth, async (req, res) => {
   try {
     await Activity.create({
       user_id: req.session.userId,
       entry_date: req.body.entry_date,
       duration: req.body.duration,
       distance: req.body.distance,
+      activity_type: req.body.activity_type,
     });
     res.status(200).json("activity created");
   } catch (err) {
@@ -106,7 +108,7 @@ router.post("/add/newActivity", async (req, res) => {
 });
 
 // getting all profiles, mainly for viewing in Insomnia for now
-router.get("/edit/profile", async (req, res) => {
+router.get("/editprofile", async (req, res) => {
   try {
     const allProfiles = await Profile.findAll();
     const profileData = allProfiles.map((p) => p.get({ plain: true }));
@@ -117,7 +119,7 @@ router.get("/edit/profile", async (req, res) => {
 });
 
 // create a new user profile
-router.post("/edit/profile", async (req, res) => {
+router.post("/editprofile", withAuth, async (req, res) => {
   try {
     const response = await Profile.create({
       user_id: req.session.userId,
@@ -133,7 +135,7 @@ router.post("/edit/profile", async (req, res) => {
 });
 
 // edit an existing user profile (still needs work)
-router.put("/edit", async (req, res) => {
+router.put("/editprofile", withAuth, async (req, res) => {
   try {
     const [affectedRows] = await Profile.update(req.body, {
       where: {

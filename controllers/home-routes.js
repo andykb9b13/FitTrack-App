@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../Models/User");
 const Profile = require("../Models/Profile");
+const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
@@ -11,7 +12,7 @@ router.get("/", async (req, res) => {
 });
 
 // getting the profile page with user info
-router.get("/profile", async (req, res) => {
+router.get("/profile", withAuth, async (req, res) => {
   try {
     console.log(req.session);
     const user = await User.findOne({
@@ -20,6 +21,7 @@ router.get("/profile", async (req, res) => {
       },
       include: [Profile],
     });
+
     console.log("this is the user", user);
     const userData = user.get({ plain: true });
     console.log("This is USERDATA", userData);
@@ -32,7 +34,7 @@ router.get("/profile", async (req, res) => {
 });
 
 // hitting the activitylog page
-router.get("/activity", async (req, res) => {
+router.get("/activity", withAuth, async (req, res) => {
   try {
     res.render("activitylog");
   } catch (err) {
@@ -58,7 +60,7 @@ router.get("/login", async (req, res) => {
   }
 });
 
-router.get("/edit", async (req, res) => {
+router.get("/edit", withAuth, async (req, res) => {
   try {
     res.status(200).render("editprofile");
   } catch (err) {
