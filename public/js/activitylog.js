@@ -22,7 +22,7 @@ const addActivity = async (event) => {
   // }
 
   try {
-    const response = await fetch("/api/user/add/newActivity", {
+    const response = await fetch("/api/user/activity", {
       method: "POST",
       body: JSON.stringify({
         // user_id: "1",
