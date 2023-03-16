@@ -35,5 +35,9 @@ body {
 }
 
 .inp {
-  border-radius: 10px;
+  border-radius: 20px;
+}
+
+.max-width-500 {
+  max-width: 456px;
 }
