@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../Models/User");
 const Profile = require("../Models/Profile");
 
+
 router.get("/", async (req, res) => {
   try {
     res.render("landingpage");

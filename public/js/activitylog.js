@@ -14,15 +14,21 @@ const addActivity = async (event) => {
   const entryDateEl = document.querySelector("#date");
   const durationEl = document.querySelector("#duration");
   const distanceEl = document.querySelector("#distance");
-  const weightEl = document.querySelector("#weight");
+  const activityEl = document.querySelector("#activity");
 
   console.log(
     "These are the addActivity values from the query selector",
     durationEl.value,
     distanceEl.value,
     entryDateEl.value,
-    weightEl.value
+    activityEl.value
   );
+
+  // this condition isn't working
+  // if (activityEl.value.toLowerCase() != "running" && "biking" && "swimming") {
+  //   alert("please enter only running, biking, or swimming");
+  //   return;
+  // }
 
   try {
     const response = await fetch("/api/user/add/newActivity", {
@@ -32,7 +38,7 @@ const addActivity = async (event) => {
         entry_date: entryDateEl.value,
         duration: durationEl.value,
         distance: distanceEl.value,
-        weight: weightEl.value,
+        activity_type: activityEl.value.toLowerCase().trim(),
       }),
       headers: { "Content-Type": "application/json" },
     });

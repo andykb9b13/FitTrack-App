@@ -20,6 +20,17 @@ body {
   background-color: var(--color-2);
 }
 
+.max-width-500 {
+  max-width: 456px;
+}
+
+.activity {
+  margin: auto;
+  padding-top: 200px;
+  justify-content: center;
+  max-width: 400px;
+}
+
 .info-card {
   border-radius: 20px;
   background-color: var(--color-4);
@@ -35,5 +46,22 @@ body {
 }
 
 .inp {
-  border-radius: 10px;
+  border-radius: 20px;
+}
+
+#loginBtn, #signupBtn, #logoutBtn{
+  border: none;
+  border-radius: 20px;
+  background-color: var(--color-3);
+}
+
+#loginBtn:hover, #signupBtn:hover, #logoutBtn:hover{
+  color:black;
+  background-color: var(--color-1);
+}
+
+#loginBtn:focus, #loginBtn:active,  #signupBtn:focus,  #signupBtn:active, #logoutBtn:focus, #logoutBtn:active{
+  color: black;
+  background-color: var(--color-1);
+  box-shadow: 0 0 5px var(--color-1);
 }
