@@ -22,10 +22,6 @@ Activity.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // activity_type: {
-    //   type: DataTypes.TEXT,
-    //   allowNull: false,
-    // },
     duration: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -34,10 +30,10 @@ Activity.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    // intensity: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
+    weight: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,
