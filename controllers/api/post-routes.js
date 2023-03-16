@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const Activity = require("../../Models/Activitylog");
 const withAuth = require("../../utils/auth");
-const uploadController = require("../../controllers/upload");
-const upload = require("../../middleware/upload");
 
 router.post("/newActivity", withAuth, async (req, res) => {
   const body = req.body;
@@ -21,51 +19,6 @@ router.post("/newActivity", withAuth, async (req, res) => {
   }
 });
 
-// router.post("/upload", upload.single("file"), uploadController.uploadFiles);
-// router.put("/:id", withAuth, async (req, res) => {
-// //   try {
-// //     const [affectedRows] = await Post.update(req.body, {
-// //       where: {
-// //         id: req.params.id,
-// //       },
-// //     });
 
-//     if (affectedRows > 0) {
-//       res.status(200).end();
-//     } else {
-//       res.status(404).end();
-//     }
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-//     if (affectedRows > 0) {
-//       res.status(200).end();
-//     } else {
-//       res.status(404).end();
-//     }
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// // removed withAuth middleware
-// router.delete("/:id", withAuth, async (req, res) => {
-//   try {
-//     const [affectedRows] = Post.destroy({
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
-
-//     if (affectedRows > 0) {
-//       res.status(200).end();
-//     } else {
-//       res.status(404).end();
-//     }
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;
