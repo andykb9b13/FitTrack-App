@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Activity = require("../../Models/Activitylog");
 const withAuth = require("../../utils/auth");
 
+
 router.post("/newActivity", withAuth, async (req, res) => {
   const body = req.body;
 
@@ -18,7 +19,6 @@ router.post("/newActivity", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 // changed { User } to User and changed /models to /Models/User
+
 const User = require("../../Models/User");
 const Activity = require("../../Models/Activitylog");
 const Profile = require("../../Models/Profile");

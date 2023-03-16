@@ -31,6 +31,11 @@ const profileRedirect = async (event) => {
   document.location.replace("/profile");
 };
 
+const uploadRedirect = async (event) => {
+  event.preventDefault();
+  document.location.replace("/upload");
+};
+
 document
   .querySelector("#saveProfileBtn")
   .addEventListener("click", saveProfileForm);
