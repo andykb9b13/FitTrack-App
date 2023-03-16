@@ -6,7 +6,7 @@ const saveProfileForm = async function (event) {
   const heightEl = document.querySelector("#height-input");
   const startingWeightEl = document.querySelector("#starting-weight-input");
 
-  const response = await fetch("/api/user/edit/profile", {
+  const response = await fetch("/api/user/editprofile", {
     method: "POST",
     body: JSON.stringify({
       age: ageEl.value,

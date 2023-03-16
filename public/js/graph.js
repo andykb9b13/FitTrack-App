@@ -10,7 +10,7 @@ let activityChart = new Chart(ctx, {
 
 const getActivities = async () => {
   try {
-    const response = await fetch("/api/graph/all/activities", {
+    const response = await fetch("/api/graph/all", {
       method: "GET",
     });
     console.log("This is the response for getActivities", response);
