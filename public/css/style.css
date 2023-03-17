@@ -120,8 +120,6 @@ body {
   border-radius: 0 20px 20px 0;
 }
 
-/* Profile Card Styling */
-
 /* Weekly Goals */
 .max-goals {
   max-width: 700px;
@@ -129,4 +127,16 @@ body {
 
 .plus {
   margin-top: -45px;
+}
+
+/* Activity Log Styling */
+.activity-label {
+  border-radius: 20px 20px 0 0;
+  border: none;
+  background-color: var(--color-3);
+  color: var(--color-5);
+}
+
+.activity-input {
+  border-radius: 0 0 20px 20px;
 }
