@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../Models/User");
 const Profile = require("../Models/Profile");
 const withAuth = require("../utils/auth");
+const Goals = require("../Models/Goals")
 
 router.get("/", async (req, res) => {
   try {
@@ -19,7 +20,7 @@ router.get("/profile", withAuth, async (req, res) => {
       where: {
         user_id: req.session.userId,
       },
-      include: [Profile],
+      include: [Profile, Goals],
     });
 
     console.log("this is the user", user);
@@ -63,6 +64,14 @@ router.get("/login", async (req, res) => {
 router.get("/edit", withAuth, async (req, res) => {
   try {
     res.status(200).render("editprofile");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/goals", withAuth, async (req, res) => {
+  try {
+res.render("goalslog")
   } catch (err) {
     res.status(500).json(err);
   }

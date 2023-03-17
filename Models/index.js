@@ -7,17 +7,7 @@ User.hasOne(Profile, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE',
 });
-
 Profile.belongsTo(User, {
-    foreignKey: 'user_id',
-});
-
-User.hasOne(Goals, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
-});
-  
-Goals.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
@@ -31,12 +21,12 @@ Activity.belongsTo(User, {
 })
 
 
-// User.hasMany(Goals, {
-//     foreignKey: 'user_id',
-//     onDelete: 'CASCADE',
-// });
-// Goals.belongsTo(User, {
-//     foreignKey: 'driver_id',
-// });
+User.hasOne(Goals, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+});
+Goals.belongsTo(User, {
+    foreignKey: 'user_id',
+});
 
-module.exports = { User, Profile, Activity, Goals };
+module.exports = { User, Profile, Activity };
