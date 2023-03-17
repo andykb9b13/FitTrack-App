@@ -1,39 +1,51 @@
 const router = require("express").Router();
-const multer = require("multer");
-const storage = multer.memoryStorage();
-const multerUploads = multer({ storage }).single("image");
+require("dotenv").config();
 const cloudinary = require("cloudinary").v2;
+const path = require("path");
+// const { multerUploads, dataUri } = require("../../middleware/upload");
 
 cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET,
+  cloud_name: "dezrrgciy",
+  api_key: "835467973965936",
+  api_secret: "ylZdoMPkYlRWtjvHOU-oJxkjkHk",
 });
 
+// /api/upload route
+
 //image upload get
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const response = await cloudinary.uploader.upload(
-      "https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
-      { public_id: "olympic_flag" }
+      "/Users/andrewkleindienst/Bootcamp/group4-project/public/assets/images/branding/FIT_TRACK_BRAND_GUIDE.jpg",
+      { folder: "fittrack/branding", public_id: "branding" }
     );
-    console.log(response.json);
-    console.log(response.secure_url.json);
+    console.log("This is the response", response);
+    console.log("This is the secure url", response.secure_url);
 
     // Generate
-    const url = cloudinary.url("olympic_flag", {
-      width: 100,
-      height: 150,
-      Crop: "fill",
-    });
+    // const url = cloudinary.url("olympic_flag", {
+    //   width: 100,
+    //   height: 150,
+    //   Crop: "fill",
+    // });
 
+    // res.json(url);
     // The output url
-    console.log(url);
+    // console.log(url);
     // https://res.cloudinary.com/<cloud_name>/image/upload/h_150,w_100/olympic_flag
   } catch (err) {
     console.log(err);
   }
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const image = cloudinary.image("fittrack/branding/branding");
+    const url = cloudinary.url("fittrack/branding/branding");
+    res.json(url, image);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
-module.exports = multerUploads;

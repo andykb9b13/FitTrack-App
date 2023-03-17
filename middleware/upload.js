@@ -1,21 +1,11 @@
-// const multer = require("multer");
+const multer = require("multer");
+const Datauri = require("datauri");
+const path = require("path");
+const storage = multer.memoryStorage();
+const multerUploads = multer({ storage }).single("image");
+const dUri = new Datauri();
 
-// const imageFilter = (req, file, cb) => {
-//   if (file.mimetype.startsWith("image")) {
-//     cb(null, true);
-//   } else {
-//     cb("Please upload only images.", false);
-//   }
-// };
+const dataUri = (req) =>
+  dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);
 
-// var storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, __basedir + "/assets/images/uploads/");
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, `${Date.now()}-bezkoder-${file.originalname}`);
-//   },
-// });
-
-// var uploadFile = multer({ storage: storage, fileFilter: imageFilter });
-// module.exports = uploadFile;
+module.exports = { multerUploads, dataUri };

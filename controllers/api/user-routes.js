@@ -122,30 +122,47 @@ router.get("/editprofile", async (req, res) => {
 // create a new user profile
 router.post("/editprofile", withAuth, async (req, res) => {
   try {
+    const imageUpload = await cloudinary.uploader.upload(req.body.image_url, {
+      public_id: `${req.body.image_url}`,
+    });
+    console.log("This is the imageUpload", imageUpload);
+    console.log(
+      "This is the uploaded images secure url",
+      imageUpload.secure_url
+    );
+
     const response = await Profile.create({
       user_id: req.session.userId,
       age: req.body.age,
       location: req.body.location,
       height: req.body.height,
       starting_weight: req.body.starting_weight,
+      image_url: imageUpload.secure_url,
     });
+
+    // Generate
+    const url = cloudinary.url("olympic_flag", {
+      width: 100,
+      height: 150,
+      Crop: "fill",
+    });
+
+    res.json(url);
     res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-
 //get route for all goals to view in insomnia
 router.get("/allgoals", async (req, res) => {
   try {
-    const response = await Goals.findAll()
+    const response = await Goals.findAll();
     res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
-})
-
+});
 
 //goals post
 router.post("/goals", withAuth, async (req, res) => {

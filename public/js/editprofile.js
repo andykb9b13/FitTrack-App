@@ -5,6 +5,7 @@ const saveProfileForm = async function (event) {
   const locationEl = document.querySelector("#location-input");
   const heightEl = document.querySelector("#height-input");
   const startingWeightEl = document.querySelector("#starting-weight-input");
+  const imageEl = document.querySelector("#image");
 
   const response = await fetch("/api/user/editprofile", {
     method: "POST",
@@ -13,6 +14,7 @@ const saveProfileForm = async function (event) {
       location: locationEl.value,
       height: heightEl.value,
       starting_weight: startingWeightEl.value,
+      image_url: imageEl.value,
     }),
     headers: { "Content-Type": "application/json" },
   });
