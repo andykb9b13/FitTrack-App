@@ -38,7 +38,7 @@ const saveGoalsForm = async function (event) {
     .querySelector("#savegoals")
     .addEventListener("click", saveGoalsForm);
   
-  // document
-  //   .querySelector("#cancelChangesBtn")
-  //   .addEventListener("click", profileRedirect);
+  document
+     .querySelector("#cancelBtn")
+   .addEventListener("click", profileRedirect);
   
