@@ -26,8 +26,17 @@ body {
   height: 80vh;
 }
 
+.cog {
+  color: var(--color-1);
+}
+
 .max-width-500 {
   max-width: 456px;
+}
+
+.card-img-top {
+  max-width: 300;
+  max-height: 300;
 }
 
 .activity {
@@ -35,6 +44,11 @@ body {
   padding-top: 200px;
   justify-content: center;
   max-width: 400px;
+}
+
+.test-card {
+  border-radius: 20px;
+  background-color: var(--color-4);
 }
 
 .info-card {
