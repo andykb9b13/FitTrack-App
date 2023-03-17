@@ -4,6 +4,7 @@ const User = require("../../Models/User");
 const Activity = require("../../Models/Activitylog");
 const Profile = require("../../Models/Profile");
 const withAuth = require("../../utils/auth");
+const Goals = require("../../Models/Goals");
 
 // api/user route
 
@@ -127,6 +128,33 @@ router.post("/editprofile", withAuth, async (req, res) => {
       location: req.body.location,
       height: req.body.height,
       starting_weight: req.body.starting_weight,
+    });
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+//get route for all goals to view in insomnia
+router.get("/allgoals", async (req, res) => {
+  try {
+    const response = await Goals.findAll()
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+
+//goals post
+router.post("/goals", withAuth, async (req, res) => {
+  try {
+    const response = await Goals.create({
+      user_id: req.session.userId,
+      hours_of_exercise: req.body.hours_of_exercise,
+      days_of_exercise: req.body.days_of_exercise,
+      weightloss_goal: req.body.weightloss_goal,
     });
     res.status(200).json(response);
   } catch (err) {
