@@ -69,6 +69,13 @@ body {
   border-radius: 20px;
 }
 
+#activityGraph {
+  color: var(--color-5);
+  border-radius: 10px;
+  padding-right: 10px;
+  background-color: var(--color-2);
+}
+
 /* Button Styling */
 #loginBtn, #signupBtn, #logoutBtn, 
 #saveProfileBtn, #cancelChangesBtn,
