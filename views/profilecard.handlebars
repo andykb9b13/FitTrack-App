@@ -1,23 +1,27 @@
 <!-- If logged in main body of site -->
 <section class="container-fluid space-between p-4 row ps-2 text-white">
   <!-- Container for profile-pic -->
-  <div class="col-md-4 col-sm-12 mx-auto pr-1 border" id="user-profile-card">
+  <div class="test-card col-md-4 col-sm-12 mx-auto pr-1" id="user-profile-card">
     {{> profileDisplay}}
   </div>
 
-  <div class="col-md-8 col-sm-12 border p-5 mx-auto" id="chart-display">
-    <div class="row justify-content-end">
+  <div class="test-card col-md-8 col-sm-12 p-5 mx-auto" id="chart-display">
+    <div class="row justify-content-center">
       <button class="btn btn-outline-secondary" id="activityBtn">+ Log Activity</button>
       <button class="btn btn-outline-secondary" id="allActivitiesBtn">All</button>
       <button class="btn btn-outline-secondary" id="runningBtn">Running</button>
       <button class="btn btn-outline-secondary" id="swimmingBtn">Swimming</button>
       <button class="btn btn-outline-secondary" id="bikingBtn">Biking</button>
+    </div>
+    <br />
+    <br />
     {{!-- </div>
     {{> activityGraph}}
-  </div> --}}
-  <div>
-  <canvas id="activityGraph" class="w-100 h-100"></canvas>
-</div>
+    </div> --}}
+    <div class="col">
+    <canvas id="activityGraph"></canvas>
+    </div>
+  </div>
 </section>
 
 <!-- Tabs or Pills can be used in a card with the help of .nav-{tabs|pills} and .card-header-{tabs|pills} classes -->
