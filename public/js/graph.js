@@ -48,7 +48,10 @@ const activityData = async (userData) => {
       ],
     },
     options: {
-      plugin: {
+      plugins: {
+        customcanvasBackgroundColor: {
+          color: "red",
+        },
         title: {
           display: true,
           positon: "top",
