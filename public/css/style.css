@@ -69,12 +69,15 @@ body {
   border-radius: 20px;
 }
 
+#activityGraph {
+  color: var(--color-5);
+  border-radius: 10px;
+  padding-right: 10px;
+  background-color: var(--color-2);
+}
+
 /* Button Styling */
-#loginBtn, #signupBtn, #logoutBtn, 
-#saveProfileBtn, #cancelChangesBtn,
-#activityBtn, #allActivitiesBtn,
-#runningBtn, #swimmingBtn,
-#bikingBtn{
+.btn-primary {
   border: none;
   border-radius: 20px;
   background-color: var(--color-3);
@@ -82,13 +85,10 @@ body {
   margin-left: 10px;
 }
 
-#loginBtn:hover, #signupBtn:hover,
-#logoutBtn:hover, #saveProfileBtn:hover,
-#cancelChangesBtn:hover, #activityBtn:hover,
-#allActivitiesBtn:hover, #runningBtn:hover,
-#swimmingBtn:hover, #bikingBtn:hover{
-  color:black;
+.btn-primary:hover{
+  color: black;
   background-color: var(--color-1);
+  box-shadow: 0 0 5px var(--color-1);
 }
 
 #loginBtn:focus, #loginBtn:active,
@@ -100,11 +100,14 @@ body {
 #allActivitiesBtn:focus, #allActivitiesBtn:active,
 #runningBtn:focus, #runningBtn:active,
 #swimmingBtn:focus, #swimmingBtn:active,
-#bikingBtn:focus, #bikingBtn:active{
+#bikingBtn:focus, #bikingBtn:active,
+#savegoals:focus, #savegoals:active,
+#cancelBtn:focus, #cancelBtn:active{
   color: black;
   background-color: var(--color-1);
   box-shadow: 0 0 5px var(--color-1);
 }
+
 
 /* Edit Profile Styling */
 .cust-tag {
@@ -117,7 +120,20 @@ body {
 #age-input,
 #location-input,
 #height-input,
-#starting-weight-input {
+#starting-weight-input,
+#total-hours, #days-of-exercise,
+#target-weight {
   height: 40px;
   border-radius: 0 20px 20px 0;
+}
+
+/* Profile Card Styling */
+
+/* Weekly Goals */
+.max-goals {
+  max-width: 700px;
+}
+
+.plus {
+  margin-top: -45px;
 }

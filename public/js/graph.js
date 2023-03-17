@@ -33,8 +33,8 @@ const activityData = async (userData) => {
           label: "Duration",
           data: data.map((row) => row.duration),
           borderWidth: 2,
-          borderColor: "rgb(170, 74, 68)",
-          backgroundColor: "rgb(170, 74, 68)",
+          borderColor: "rgb(140, 197, 227)",
+          backgroundColor: "rgb(140, 197, 227)",
           type: "line",
           order: 0,
         },
@@ -42,16 +42,13 @@ const activityData = async (userData) => {
           label: "Distance",
           data: data.map((row) => row.distance),
           borderWidth: 2,
-          backgroundColor: "rgb(0, 0, 255, 0.7)",
+          backgroundColor: "rgb(219, 247, 98, 0.7)",
           order: 1,
         },
       ],
     },
     options: {
       plugins: {
-        customcanvasBackgroundColor: {
-          color: "red",
-        },
         title: {
           display: true,
           positon: "top",
@@ -67,11 +64,24 @@ const activityData = async (userData) => {
             display: true,
             text: "Time (Minutes)",
           },
+          ticks: {
+            color: "#ababab",
+          },
+          grid: {
+            color: "#ababab",
+          },
         },
         x: {
           title: {
             display: true,
             text: "Date (YYYY/MM/DD)",
+          },
+          reverse: true,
+          ticks: {
+            color: "#ababab",
+          },
+          grid: {
+            color: "#ababab",
           },
         },
       },
