@@ -10,6 +10,7 @@ h1 {
   text-align: center;
 }
 
+/* Navbar Styling */
 .navbar-brand img {
   height: 50px;
   float: left;
@@ -18,6 +19,11 @@ h1 {
 
 body {
   background-color: var(--color-2);
+}
+
+/* User Information Pages Styling */
+.centering-container {
+  height: 80vh;
 }
 
 .cog {
@@ -63,19 +69,55 @@ body {
   border-radius: 20px;
 }
 
-#loginBtn, #signupBtn, #logoutBtn{
+/* Button Styling */
+#loginBtn, #signupBtn, #logoutBtn, 
+#saveProfileBtn, #cancelChangesBtn,
+#activityBtn, #allActivitiesBtn,
+#runningBtn, #swimmingBtn,
+#bikingBtn{
   border: none;
   border-radius: 20px;
   background-color: var(--color-3);
+  color: var(--color-5);
+  margin-left: 10px;
 }
 
-#loginBtn:hover, #signupBtn:hover, #logoutBtn:hover{
+#loginBtn:hover, #signupBtn:hover,
+#logoutBtn:hover, #saveProfileBtn:hover,
+#cancelChangesBtn:hover, #activityBtn:hover,
+#allActivitiesBtn:hover, #runningBtn:hover,
+#swimmingBtn:hover, #bikingBtn:hover{
   color:black;
   background-color: var(--color-1);
 }
 
-#loginBtn:focus, #loginBtn:active,  #signupBtn:focus,  #signupBtn:active, #logoutBtn:focus, #logoutBtn:active{
+#loginBtn:focus, #loginBtn:active,
+#signupBtn:focus,  #signupBtn:active,
+#logoutBtn:focus, #logoutBtn:active,
+#saveProfileBtn:focus, #saveProfileBtn:active,
+#cancelChangesBtn:focus, #cancelChangesBtn:active,
+#activityBtn:focus, #activityBtn:active,
+#allActivitiesBtn:focus, #allActivitiesBtn:active,
+#runningBtn:focus, #runningBtn:active,
+#swimmingBtn:focus, #swimmingBtn:active,
+#bikingBtn:focus, #bikingBtn:active{
   color: black;
   background-color: var(--color-1);
   box-shadow: 0 0 5px var(--color-1);
+}
+
+/* Edit Profile Styling */
+.cust-tag {
+  border-radius: 20px 0 0 20px;
+  background-color: var(--color-3);
+  color: var(--color-5);
+  width: 135px;
+}
+
+#age-input,
+#location-input,
+#height-input,
+#starting-weight-input {
+  height: 40px;
+  border-radius: 0 20px 20px 0;
 }
