@@ -6,6 +6,15 @@ const Profile = require("../../Models/Profile");
 const withAuth = require("../../utils/auth");
 const Goals = require("../../Models/Goals");
 
+const cloudinary = require("cloudinary").v2;
+const path = require("path");
+
+cloudinary.config({
+  cloud_name: "dezrrgciy",
+  api_key: "835467973965936",
+  api_secret: "ylZdoMPkYlRWtjvHOU-oJxkjkHk",
+});
+
 // api/user route
 
 // getting all users, mainly for viewing in Insomnia for now
@@ -122,13 +131,9 @@ router.get("/editprofile", async (req, res) => {
 // create a new user profile
 router.post("/editprofile", withAuth, async (req, res) => {
   try {
-    const imageUpload = await cloudinary.uploader.upload(req.body.image_url, {
-      public_id: `${req.body.image_url}`,
-    });
-    console.log("This is the imageUpload", imageUpload);
-    console.log(
-      "This is the uploaded images secure url",
-      imageUpload.secure_url
+    const imageUpload = await cloudinary.uploader.upload(
+      "/Users/andrewkleindienst/Bootcamp/group4-project/public/assets/images/test-profile-image.jpeg",
+      { folder: "fittrack/profiles" }
     );
 
     const response = await Profile.create({
@@ -139,15 +144,6 @@ router.post("/editprofile", withAuth, async (req, res) => {
       starting_weight: req.body.starting_weight,
       image_url: imageUpload.secure_url,
     });
-
-    // Generate
-    const url = cloudinary.url("olympic_flag", {
-      width: 100,
-      height: 150,
-      Crop: "fill",
-    });
-
-    res.json(url);
     res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
