@@ -2,9 +2,15 @@
   <div class="card info-card p-4 col-md-4 mx-auto max-width-500">
     <div id="editprofile">
       <h2 class="text-center mb-5">Edit Your Profile</h2>
-      <form enctype="multipart/form-data">
+      <form>
         <!--Image upload to eventually go here-->
         <div class="form-group col-10 mx-auto">
+          <input
+            type="file"
+            name="file"
+            id="image"
+            class="form-control-file border"
+          />
         </div>
         <div class="input-group input-group-sm mb-3">
           <span
@@ -60,23 +66,12 @@
           />
         </div>
         <div class="text-center mt-5">
-          <button type="submit" class="btn btn-primary" id="saveProfileBtn">Save
-            Profile</button>
+          <button class="btn btn-primary" id="saveProfileBtn">Save Profile</button>
           <button class="btn btn-primary" id="cancelChangesBtn">Cancel Changes</button>
         </div>
       </form>
-      <button id="upload_widget" class="cloudinary-button">Upload Image</button>
     </div>
   </div>
 </div>
-
-<script
-  src="https://upload-widget.cloudinary.com/global/all.js"
-  type="text/javascript"
-></script>
-
-<script type="text/javascript">
-
-</script>
 
 <script src="/js/editprofile.js"></script>
