@@ -1,13 +1,28 @@
 const router = require("express").Router();
-// changed { User } to User and changed /models to /Models/User
 const User = require("../../Models/User");
 const Activity = require("../../Models/Activitylog");
 const Profile = require("../../Models/Profile");
 const withAuth = require("../../utils/auth");
 const Goals = require("../../Models/Goals");
 
-const cloudinary = require("cloudinary").v2;
+const uploadFiles = require("../upload");
+
+const multer = require("multer");
 const path = require("path");
+const storage = multer.memoryStorage({
+  filename: (req, file, cb) => {
+    console.log(file);
+    cb(null, path.extname(file.originalname));
+  },
+});
+const upload = multer({ storage: storage });
+const multerUploads = upload.single("image");
+
+// const { multerUploads } = require("../../middleware/upload");
+
+require("dotenv").config();
+const fs = require("fs");
+const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
   cloud_name: "dezrrgciy",
@@ -129,25 +144,24 @@ router.get("/editprofile", async (req, res) => {
 });
 
 // create a new user profile
-router.post("/editprofile", withAuth, async (req, res) => {
+router.post("/editprofile", async (req, res) => {
   try {
-    const imageUpload = await cloudinary.uploader.upload(
-      "/Users/andrewkleindienst/Bootcamp/group4-project/public/assets/images/test-profile-image.jpeg",
-      { folder: "fittrack/profiles" }
-    );
-
     const response = await Profile.create({
       user_id: req.session.userId,
       age: req.body.age,
       location: req.body.location,
       height: req.body.height,
       starting_weight: req.body.starting_weight,
-      image_url: imageUpload.secure_url,
+      image_url: req.body.image_url,
     });
     res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+router.post("/imageUpload", multerUploads, (req, res) => {
+  const imageUpload = res.send(req);
 });
 
 //get route for all goals to view in insomnia

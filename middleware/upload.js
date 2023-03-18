@@ -1,11 +1,15 @@
 const multer = require("multer");
-const Datauri = require("datauri");
 const path = require("path");
-const storage = multer.memoryStorage();
-const multerUploads = multer({ storage }).single("image");
-const dUri = new Datauri();
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "../../public/assets/images");
+  },
+  filename: (req, file, cb) => {
+    console.log(file);
+    cb(null, path.extname(file.originalname));
+  },
+});
+const uploads = multer({ storage, limits: { fieldSize: 10 * 1024 * 1024 } });
+const multerUploads = uploads.single("image");
 
-const dataUri = (req) =>
-  dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);
-
-module.exports = { multerUploads, dataUri };
+module.exports = multerUploads;
