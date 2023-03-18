@@ -33,6 +33,14 @@ Goals.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    goals_start_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    goal_end_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   },
   {
     sequelize,

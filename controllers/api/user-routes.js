@@ -155,6 +155,8 @@ router.post("/goals", withAuth, async (req, res) => {
       hours_of_exercise: req.body.hours_of_exercise,
       days_of_exercise: req.body.days_of_exercise,
       weightloss_goal: req.body.weightloss_goal,
+      goal_start_date: req.body.goal_start_date,
+      goal_end_date: req.body.goal_end_date,
     });
     res.status(200).json(response);
   } catch (err) {

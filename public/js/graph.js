@@ -15,6 +15,7 @@ const getActivities = async () => {
     });
     console.log("This is the response for getActivities", response);
     const data = response.json();
+    console.log("activity data", data)
     activityData(data);
   } catch (err) {
     console.log(err);

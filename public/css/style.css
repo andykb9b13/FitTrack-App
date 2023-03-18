@@ -6,6 +6,11 @@
   --color-5:#FFF;
 }
 
+body {
+  font-family: 'Avenir Next LT Pro', sans-serif;
+}
+
+
 h1 {
   text-align: center;
 }
