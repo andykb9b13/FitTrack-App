@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../Models/User");
 const Profile = require("../Models/Profile");
 const withAuth = require("../utils/auth");
-const Goals = require("../Models/Goals")
+const Goals = require("../Models/Goals");
 
 router.get("/", async (req, res) => {
   try {
@@ -71,7 +71,7 @@ router.get("/edit", withAuth, async (req, res) => {
 
 router.get("/goals", withAuth, async (req, res) => {
   try {
-res.render("goalslog")
+    res.render("goalslog");
   } catch (err) {
     res.status(500).json(err);
   }

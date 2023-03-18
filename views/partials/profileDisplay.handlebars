@@ -1,15 +1,11 @@
 <div class="row justify-content-end">
-  <a
-    href="/edit"
-    class="text-decoration-none"
-    id="edit-profile"
-  >
-  <i class="cog fa-solid fa-gear fa-3x p-3"></i>
+  <a href="/edit" class="text-decoration-none" id="edit-profile">
+    <i class="cog fa-solid fa-gear fa-3x p-3"></i>
   </a>
 </div>
 <div class="justify-content-center text-center">
   <img
-    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"
+    src={{userData.profile.image_url}}
     class="card-img-top p-4"
     alt="profile-image"
   />

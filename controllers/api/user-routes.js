@@ -6,6 +6,14 @@ const Profile = require("../../Models/Profile");
 const withAuth = require("../../utils/auth");
 const Goals = require("../../Models/Goals");
 
+const cloudinary = require("cloudinary").v2;
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
+
 // api/user route
 
 // getting all users, mainly for viewing in Insomnia for now
@@ -128,6 +136,7 @@ router.post("/editprofile", withAuth, async (req, res) => {
       location: req.body.location,
       height: req.body.height,
       starting_weight: req.body.starting_weight,
+      image_url: req.body.image_url,
     });
     res.status(200).json(response);
   } catch (err) {
@@ -135,17 +144,15 @@ router.post("/editprofile", withAuth, async (req, res) => {
   }
 });
 
-
 //get route for all goals to view in insomnia
 router.get("/allgoals", async (req, res) => {
   try {
-    const response = await Goals.findAll()
+    const response = await Goals.findAll();
     res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
-})
-
+});
 
 //goals post
 router.post("/goals", withAuth, async (req, res) => {
