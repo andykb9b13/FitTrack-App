@@ -12,9 +12,9 @@ let goalEnd = userData.goal.goal_end_date
 //relative time that will tell how many days until x date based on current session date. Can be used to display messages on how many days remaining to complete goal
 // or set expire date on goal. 
 
-// dayjs.extend(relativeTime)
-// var a = dayjs('2000-01-01')
-// dayjs('1999-01-01').to(a)
+dayjs.extend(relativeTime)
+var a = dayjs('2000-01-01')
+dayjs('1999-01-01').to(a)
 
 //get stored values to be used with functions
 
@@ -30,26 +30,21 @@ const getActivities = async () => {
       console.log("activity data", data)
       exerciseHoursGoal(data);
       exerciseDaysGoal(data);
+      weightLossGoal(data)
     } catch (err) {
       console.log(err);
     }
   };
 
-  getActivities();
-
-
-// let goalDate = //get goal from goal_end_date: goalEndDateEl.value,
-// let goalEnteredDate = //get timestamp of goal entered
-
-// let totalHours = //hours totaled from 'duration: durationEl.value,' ranging from from goal date to now date.  
-// let totalDays = //entries totaled from 'entry_date: entryDateEl.value,'ranging from from goal entered date to now date.
-
-
+//call on pageload
+getActivities();
 
 let exerciseHoursGoal = (data) => {
     //filter exercise log array to only include log dates equal or greater than log entry dates and less than end date. 
+    let activityLogs = data;
+
     const filteredLogs = activityLogs.filter(log => {
-        return log.entry_date >= startDate && log.entry_date <= endDate;
+        return log.entry_date >= goalStart && log.entry_date <= goalEnd;
       });
       
       //add remaining array items and reduce to total duration. 
@@ -80,10 +75,12 @@ let hoursGoalsProgress = (totalDuration) => {
 
 };
 
-
+//TODO update element targets for text output
 let exerciseDaysGoal = (data) => {
+    let activityLogs = data;
+
     const filteredLogs = activityLogs.filter(log => {
-        return log.entry_date >= startDate && log.entry_date <= endDate;
+        return log.entry_date >= goalStart && log.entry_date <= goalEnd;
       });
       
       const goalEntriesCount = filteredLogs.length;
@@ -93,6 +90,7 @@ let exerciseDaysGoal = (data) => {
       switch (goalDaysRemaining) {
         case goalDaysRemaining ===  goalDays:
             goalStatus = "Get started on your days exercised goal!"
+            document.getElementById('date').textContent = goalStatus
             break;
         case goalDaysRemaining >  0:
             goalStatus = "Not quite there. You have" + goalDaysRemaining + " days to go! Keep working at it!"
@@ -104,15 +102,23 @@ let exerciseDaysGoal = (data) => {
 };
 
 
-let weightLossGoal = () => {
+let weightLossGoal = (data) => {
+    let activityLogs = data;
+    const lastWeighIn = activityLogs[activityLogs.length - 1].weigh_in;
 
+    let weightRemaining = goalWeight - lastWeighIn
 
-
+    switch (weightRemaining) {
+        case weightRemaining ===  goalDays:
+            goalStatus = "Get started on your days exercised goal!"
+            document.getElementById('date').textContent = goalStatus
+            break;
+        case weightRemaining >  0:
+            goalStatus = "Not quite there but great progress! You have " + weightRemaining + " lbs to go. Keep up the hard work!"
+            break;
+        case weightRemaining < 0:
+            goalStatus = "Awesome Job! You rocked your weight loss goal!"
+            break;
+        }
 
 };
-
-
-
-exerciseHoursGoal(); 
-exerciseDaysGoal();
-weightLossGoal();

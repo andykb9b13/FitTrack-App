@@ -101,6 +101,7 @@ router.post("/activity", withAuth, async (req, res) => {
       duration: req.body.duration,
       distance: req.body.distance,
       activity_type: req.body.activity_type,
+      weigh_in: req.body.weigh_in,
     });
     res.status(200).json("activity created");
   } catch (err) {

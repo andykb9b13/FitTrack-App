@@ -1,5 +1,4 @@
 const dayjs = require('dayjs')
-
 var now = dayjs().format('YYYY/MM/DD')
 
 console.log("this is now: ", now)
