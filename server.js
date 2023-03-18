@@ -5,9 +5,6 @@ const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 
-// const { uploader, cloudinaryConfig } = require("./middleware/cloudinary");
-// const { multerUploads, dataUri } = require("./middleware/upload");
-
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 

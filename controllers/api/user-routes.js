@@ -7,12 +7,11 @@ const withAuth = require("../../utils/auth");
 const Goals = require("../../Models/Goals");
 
 const cloudinary = require("cloudinary").v2;
-const path = require("path");
 
 cloudinary.config({
-  cloud_name: "dezrrgciy",
-  api_key: "835467973965936",
-  api_secret: "ylZdoMPkYlRWtjvHOU-oJxkjkHk",
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
 
 // api/user route
@@ -131,12 +130,6 @@ router.get("/editprofile", async (req, res) => {
 // create a new user profile
 router.post("/editprofile", withAuth, async (req, res) => {
   try {
-    // const imageUpload = await cloudinary.uploader.upload(req.body.image_url, {
-    //   folder: "fittrack/profiles",
-    // });
-
-    console.log("This is the image_url in the route", req.body.image_url);
-
     const response = await Profile.create({
       user_id: req.session.userId,
       age: req.body.age,
