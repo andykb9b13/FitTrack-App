@@ -4,7 +4,7 @@
       <i class="cog fa-solid fa-gear fa-3x pr-4 pt-2"></i>
     </a>
   </div>
-  <div class="testing justify-content-center text-center">
+  <div class="justify-content-center text-center">
     <img
       src={{userData.profile.image_url}}
       class="card-img-top p-4"
@@ -12,12 +12,12 @@
     />
     <div class="card-body">
       <h2 class="card-title">{{userData.name}}</h2>
-      <h4 class="card-text">Location: {{userData.profile.location}}</h4>
-      <h4 class="card-text">Height: {{userData.profile.height}} feet</h4>
-      <h4 class="card-text">Starting Weight:
+      <p class="card-text">Location: {{userData.profile.location}}</p>
+      <p class="card-text">Height: {{userData.profile.height}} feet</p>
+      <p class="card-text">Starting Weight:
         {{userData.profile.starting_weight}}
         lbs
-      </h4>
+      </p>
       <button class="btn btn-primary" id="deleteBtn">Delete Account</button>
     </div>
   </div>
