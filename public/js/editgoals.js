@@ -1,12 +1,12 @@
 const saveGoalsForm = async function (event) {
-  console.log("are we inside?")
-    event.preventDefault();
-  
-    const totalHoursEl = document.querySelector("#total-hours");
-    const daysOfExerciseEl = document.querySelector("#days-of-exercise");
-    const targetweightEl = document.querySelector("#target-weight");
+  console.log("are we inside?");
+  event.preventDefault();
 
-    try {
+  const totalHoursEl = document.querySelector("#total-hours");
+  const daysOfExerciseEl = document.querySelector("#days-of-exercise");
+  const targetweightEl = document.querySelector("#target-weight");
+
+  try {
     const response = await fetch("/api/user/goals", {
       method: "POST",
       body: JSON.stringify({
@@ -17,28 +17,23 @@ const saveGoalsForm = async function (event) {
       headers: { "Content-Type": "application/json" },
     });
     console.log("goals response", response);
-  
+
     if (response.ok) {
-      document.location.replace("/goals");
+      document.location.replace("/profile");
       alert("Goals updated!");
     } else {
       alert("Failed to update profile.");
     }
   } catch (err) {
-    console.log("error in goals", err)
+    console.log("error in goals", err);
   }
-  };
-  
-  const profileRedirect = async (event) => {
-    event.preventDefault();
-    document.location.replace("/profile");
-  };
-  
-  document
-    .querySelector("#savegoals")
-    .addEventListener("click", saveGoalsForm);
-  
-  document
-     .querySelector("#cancelBtn")
-   .addEventListener("click", profileRedirect);
-  
+};
+
+const profileRedirect = async (event) => {
+  event.preventDefault();
+  document.location.replace("/profile");
+};
+
+document.querySelector("#savegoals").addEventListener("click", saveGoalsForm);
+
+document.querySelector("#cancelBtn").addEventListener("click", profileRedirect);

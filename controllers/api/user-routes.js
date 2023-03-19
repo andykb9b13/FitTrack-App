@@ -144,6 +144,20 @@ router.post("/editprofile", withAuth, async (req, res) => {
   }
 });
 
+// edit an existing user profile (still needs work)
+router.put("/editprofile", withAuth, async (req, res) => {
+  try {
+    const response = await Profile.update(req.body, {
+      where: {
+        user_id: req.session.userId,
+      },
+    });
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //get route for all goals to view in insomnia
 router.get("/allgoals", async (req, res) => {
   try {
@@ -169,35 +183,14 @@ router.post("/goals", withAuth, async (req, res) => {
   }
 });
 
-// edit an existing user profile (still needs work)
-router.put("/editprofile", withAuth, async (req, res) => {
-  try {
-    const [affectedRows] = await Profile.update(req.body, {
-      where: {
-        user_id: req.session.userId,
-      },
-    });
-
-    if (affectedRows > 0) {
-      res.status(200).end();
-    } else {
-      res.status(404).end();
-    }
-    res.status(200).json(response);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// router.get("/id/:id", async (req, res) => {
+// router.get("/profile/id", async (req, res) => {
 //   try {
-//     const user = await User.findOne({
+//     const profile = await Profile.findOne({
 //       where: {
-//         user_id: req.params.id,
+//         user_id: req.session.id,
 //       },
 //     });
-//     // const userData = user.map((u) => u.get({ plain: true }));
-//     res.status(200).json(user);
+//     res.send(profile);
 //   } catch (err) {
 //     res.status(500).json(err);
 //   }

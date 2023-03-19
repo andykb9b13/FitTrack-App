@@ -25,6 +25,37 @@ const saveProfileForm = async function (event) {
 
   if (response.ok) {
     document.location.replace("/profile");
+    alert("Profile Created!");
+  } else {
+    alert("Failed to create profile.");
+  }
+};
+
+const editProfileForm = async function (event) {
+  event.preventDefault();
+
+  const ageEl = document.querySelector("#age-input");
+  const locationEl = document.querySelector("#location-input");
+  const heightEl = document.querySelector("#height-input");
+  const startingWeightEl = document.querySelector("#starting-weight-input");
+
+  console.log("This is secure url in the saveProfileForm", imageUrl);
+
+  const response = await fetch("/api/user/editprofile", {
+    method: "PUT",
+    body: JSON.stringify({
+      age: ageEl.value,
+      location: locationEl.value,
+      height: heightEl.value,
+      starting_weight: startingWeightEl.value,
+      image_url: imageUrl,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
+  console.log(response);
+
+  if (response.ok) {
+    document.location.replace("/profile");
     alert("Profile updated!");
   } else {
     alert("Failed to update profile.");
@@ -57,6 +88,10 @@ document
 document
   .querySelector("#cancelChangesBtn")
   .addEventListener("click", profileRedirect);
+
+document
+  .querySelector("#editProfileBtn")
+  .addEventListener("click", editProfileForm);
 
 document.getElementById("upload_widget").addEventListener(
   "click",
