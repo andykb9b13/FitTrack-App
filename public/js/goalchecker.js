@@ -1,6 +1,3 @@
-// // let goalStart = userData.goal.goal_start_date
-// // let goalEnd = userData.goal.goal_end_date
-
 let goalStart;
 let goalEnd;
 let weightLossGoal;
@@ -12,14 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
   userActivitiesArr();
 });
 
-      document.getElementById('goalEndsEl').textContent = ""
-      document.getElementById('hourGoalEl').textContent = ""
-      document.getElementById('weightGoalEl').textContent = ""
-      document.getElementById('goalDayEl').textContent = ""
-      document.getElementById('hourGoalEl').textContent = ""
-      document.getElementById('hourGoalProgEl').textContent = ""
-      document.getElementById('weightProgEl').textContent = ""
-      document.getElementById('dayGoalProgEl').textContent = ""
 
 // //get stored values to be used with functions
 const userGoalArr = async () => {
@@ -70,9 +59,23 @@ const userActivitiesArr = async () => {
       const filteredData = data.filter((item) => {
         return item.entry_date >= goalStart && item.entry_date <= goalEnd;
       });
-      exerciseHoursGoal(filteredData);
-      exerciseDaysGoal(filteredData);
-      weightGoal(filteredData);
+
+      if (filteredData.length === 0){
+        document.getElementById('goalEndsEl').textContent = "Enter your first activity to track your progress."
+        document.getElementById('hourGoalEl').textContent = ""
+        document.getElementById('weightGoalEl').textContent = ""
+        document.getElementById('goalDayEl').textContent = ""
+        document.getElementById('hourGoalEl').textContent = ""
+        document.getElementById('hourGoalProgEl').textContent = ""
+        document.getElementById('weightProgEl').textContent = ""
+        document.getElementById('dayGoalProgEl').textContent = ""
+      } else {
+        exerciseHoursGoal(filteredData);
+        exerciseDaysGoal(filteredData);
+        weightGoal(filteredData);
+      
+      }
+
       console.log("these are the filtered logs by date range", filteredData)
 
     } catch (err) {

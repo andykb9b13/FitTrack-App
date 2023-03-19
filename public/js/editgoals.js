@@ -1,15 +1,5 @@
-const checkForGoals = async () => {
-  try {
-    const response = await fetch("/api/user/goals/id", {
-      method: "GET",
-    });
-    const responseData = await response.json();
-    console.log("Response Data", responseData);
-    return responseData;
-  } catch (err) {
-    console.log(err);
-  }
-};
+let goalStart = dayjs().format('YYYY-MM-DD')
+
 
 const saveGoalsForm = async function (event) {
   console.log("are we inside?")
@@ -20,45 +10,25 @@ const saveGoalsForm = async function (event) {
     const targetweightEl = document.querySelector("#target-weight");
     const goalEndEl = document.querySelector("#goal-end-date")
 
-  try {
-    const goals = await checkForGoals();
-    if (goals === null) {
-      const response = await fetch("/api/user/goals", {
-        method: "POST",
-        body: JSON.stringify({
-          hours_of_exercise: totalHoursEl.value,
-          days_of_exercise: daysOfExerciseEl.value,
-          weightloss_goal: targetweightEl.value,
+    try {
+    const response = await fetch("/api/user/goals", {
+      method: "POST",
+      body: JSON.stringify({
+        hours_of_exercise: totalHoursEl.value,
+        days_of_exercise: daysOfExerciseEl.value,
+        weightloss_goal: targetweightEl.value,
         goal_start_date: goalStart,
         goal_end_date: goalEndEl.value,
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
-      console.log("goals response", response);
-
-      if (response.ok) {
-        document.location.replace("/profile");
-        alert("Goals created!");
-      } else {
-        alert("Failed to create goals.");
-      }
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log("goals response", response);
+  
+    if (response.ok) {
+      document.location.replace("/goals");
+      alert("Goals updated!");
     } else {
-      const response = await fetch("/api/user/goals", {
-        method: "PUT",
-        body: JSON.stringify({
-          hours_of_exercise: totalHoursEl.value,
-          days_of_exercise: daysOfExerciseEl.value,
-          weightloss_goal: targetweightEl.value,
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
-      console.log("goals response", response);
-      if (response.ok) {
-        document.location.replace("/profile");
-        alert("Goals updated!");
-      } else {
-        alert("Failed to update profile.");
-      }
+      alert("Failed to update profile.");
     }
   } catch (err) {
     console.log("error in goals", err);
@@ -74,4 +44,3 @@ document.querySelector("#savegoals").addEventListener("click", saveGoalsForm);
 
 document.querySelector("#cancelBtn").addEventListener("click", profileRedirect);
 
-checkForGoals();
