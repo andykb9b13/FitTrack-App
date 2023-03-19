@@ -158,6 +158,19 @@ router.put("/editprofile", withAuth, async (req, res) => {
   }
 });
 
+router.delete("/editprofile", withAuth, async (req, res) => {
+  try {
+    const response = await Profile.destroy({
+      where: {
+        user_id: req.session.userId,
+      },
+    });
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //get route for all goals to view in insomnia
 router.get("/allgoals", async (req, res) => {
   try {
@@ -183,17 +196,17 @@ router.post("/goals", withAuth, async (req, res) => {
   }
 });
 
-// router.get("/profile/id", async (req, res) => {
-//   try {
-//     const profile = await Profile.findOne({
-//       where: {
-//         user_id: req.session.id,
-//       },
-//     });
-//     res.send(profile);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+router.get("/profile/id", async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      where: {
+        user_id: req.session.id,
+      },
+    });
+    res.status(200).json(profile);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

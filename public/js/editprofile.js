@@ -8,7 +8,7 @@ const saveProfileForm = async function (event) {
   const heightEl = document.querySelector("#height-input");
   const startingWeightEl = document.querySelector("#starting-weight-input");
 
-  console.log("This is secure url in the saveProfileForm", imageUrl);
+  // TODO make this save function hit the post or put routes depending on whether there is a profile
 
   const response = await fetch("/api/user/editprofile", {
     method: "POST",
@@ -62,6 +62,20 @@ const editProfileForm = async function (event) {
   }
 };
 
+const deleteProfileForm = async function (event) {
+  event.preventDefault();
+  const response = await fetch("api/user/editprofile", {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    document.location.replace("/profile");
+    alert("Profile Deleted");
+  } else {
+    alert("Failed to delete profile");
+  }
+};
+
 var myWidget = cloudinary.createUploadWidget(
   {
     cloudName: "dezrrgciy",
@@ -92,6 +106,10 @@ document
 document
   .querySelector("#editProfileBtn")
   .addEventListener("click", editProfileForm);
+
+document
+  .querySelector("#deleteBtn")
+  .addEventListener("click", deleteProfileForm);
 
 document.getElementById("upload_widget").addEventListener(
   "click",
