@@ -2,14 +2,14 @@
   <div id="goals-display">
     <div class="row">
       <div class="col-11">
-        <h3 class="color: #132542">Your goal ends: {{userData.goal.goal_end_date}}</h3>
+        {{!-- <h3 class="color: #132542">Your goal ends: {{userData.goal.goal_end_date}}</h3> --}}
         <p id="daysRemainingEl" class="color: #132542"></p>
-        <h4 class="color: #132542">Weekly goal of {{userData.goal.hours_of_exercise}} days of exercise:</h4>
-        <p id="daygoalEl" class="color: #132542"></p>
-        <h4 class="color: #132542">Weekly goal of {{userData.goal.days_of_exercise}} hours of exercise:</h4>
-        <p id="hourgoalEl" class="color: #132542"></p>
-        <h3 class="color: #132542"> Your goal weight is {{userData.goal.weightloss_goal}} lbs.</h3>
-        <p id="weightgoalEl" class="color: #132542"></p>
+        <h4 id ="goalDayEl" class="color: #132542"></h4>
+        <p id="dayGoalProgEl" class="color: #132542"></p>
+        <h4 id="hourGoalEl" class="color: #132542"></h4>
+        <p id="hourGoalProgEl" class="color: #132542"></p>
+        <h3 id ="weightGoalEl"class="color: #132542"></h3>
+        <p id="weightProgEl" class="color: #132542"></p>
       </div>
       <div class="plus">
         <a href="/goals" class="row justify-content-end text-decoration-none" id="edit-goals">
