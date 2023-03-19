@@ -19,7 +19,7 @@ const saveGoalsForm = async function (event) {
   const targetweightEl = document.querySelector("#target-weight");
 
   try {
-    const goals = checkForGoals();
+    const goals = await checkForGoals();
     if (goals === null) {
       const response = await fetch("/api/user/goals", {
         method: "POST",

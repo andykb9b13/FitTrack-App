@@ -21,7 +21,7 @@ const saveProfileForm = async function (event) {
   const heightEl = document.querySelector("#height-input");
   const startingWeightEl = document.querySelector("#starting-weight-input");
 
-  const profile = checkForProfile();
+  const profile = await checkForProfile();
 
   if (profile === null) {
     const response = await fetch("/api/user/editprofile", {
