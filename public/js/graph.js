@@ -27,7 +27,7 @@ const activityData = async (userData) => {
   activityChart = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: data.map((row) => row.entry_date),
+      // labels: data.map((row) => row.entry_date),
       datasets: [
         {
           label: "Duration",
@@ -73,6 +73,10 @@ const activityData = async (userData) => {
           },
         },
         x: {
+          type: "time",
+          time: {
+            unit: "day",
+          },
           title: {
             display: true,
             text: "Date (YYYY/MM/DD)",
