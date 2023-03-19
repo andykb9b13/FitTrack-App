@@ -1,5 +1,4 @@
 const router = require("express").Router();
-// changed { User } to User and changed /models to /Models/User
 const User = require("../../Models/User");
 const Activity = require("../../Models/Activitylog");
 const Profile = require("../../Models/Profile");
@@ -171,6 +170,19 @@ router.delete("/editprofile", withAuth, async (req, res) => {
   }
 });
 
+router.get("/profile/id", async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      where: {
+        user_id: req.session.userId,
+      },
+    });
+    res.status(200).json(profile);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //get route for all goals to view in insomnia
 router.get("/allgoals", async (req, res) => {
   try {
@@ -196,14 +208,27 @@ router.post("/goals", withAuth, async (req, res) => {
   }
 });
 
-router.get("/profile/id", async (req, res) => {
+router.put("/goals", withAuth, async (req, res) => {
   try {
-    const profile = await Profile.findOne({
+    const response = await Goals.update(req.body, {
       where: {
-        user_id: req.session.id,
+        user_id: req.session.userId,
       },
     });
-    res.status(200).json(profile);
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/goals/id", async (req, res) => {
+  try {
+    const goals = await Goals.findOne({
+      where: {
+        user_id: req.session.userId,
+      },
+    });
+    res.status(200).json(goals);
   } catch (err) {
     res.status(500).json(err);
   }

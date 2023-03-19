@@ -1,5 +1,18 @@
 let imageUrl = "";
 
+const checkForProfile = async () => {
+  try {
+    const response = await fetch("/api/user/profile/id", {
+      method: "GET",
+    });
+    const responseData = await response.json();
+    console.log("Response Data", responseData);
+    return responseData;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const saveProfileForm = async function (event) {
   event.preventDefault();
 
@@ -8,26 +21,46 @@ const saveProfileForm = async function (event) {
   const heightEl = document.querySelector("#height-input");
   const startingWeightEl = document.querySelector("#starting-weight-input");
 
-  // TODO make this save function hit the post or put routes depending on whether there is a profile
+  const profile = checkForProfile();
 
-  const response = await fetch("/api/user/editprofile", {
-    method: "POST",
-    body: JSON.stringify({
-      age: ageEl.value,
-      location: locationEl.value,
-      height: heightEl.value,
-      starting_weight: startingWeightEl.value,
-      image_url: imageUrl,
-    }),
-    headers: { "Content-Type": "application/json" },
-  });
-  console.log(response);
-
-  if (response.ok) {
-    document.location.replace("/profile");
-    alert("Profile Created!");
+  if (profile === null) {
+    const response = await fetch("/api/user/editprofile", {
+      method: "POST",
+      body: JSON.stringify({
+        age: ageEl.value,
+        location: locationEl.value,
+        height: heightEl.value,
+        starting_weight: startingWeightEl.value,
+        image_url: imageUrl,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(response);
+    if (response.ok) {
+      document.location.replace("/profile");
+      alert("Profile Created!!");
+    } else {
+      alert("Failed to create profile.");
+    }
   } else {
-    alert("Failed to create profile.");
+    const response = await fetch("/api/user/editprofile", {
+      method: "PUT",
+      body: JSON.stringify({
+        age: ageEl.value,
+        location: locationEl.value,
+        height: heightEl.value,
+        starting_weight: startingWeightEl.value,
+        image_url: imageUrl,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(response);
+    if (response.ok) {
+      document.location.replace("/profile");
+      alert("Profile Updated!");
+    } else {
+      alert("Failed to update profile.");
+    }
   }
 };
 
@@ -104,10 +137,6 @@ document
   .addEventListener("click", profileRedirect);
 
 document
-  .querySelector("#editProfileBtn")
-  .addEventListener("click", editProfileForm);
-
-document
   .querySelector("#deleteBtn")
   .addEventListener("click", deleteProfileForm);
 
@@ -118,3 +147,5 @@ document.getElementById("upload_widget").addEventListener(
   },
   false
 );
+
+checkForProfile();
