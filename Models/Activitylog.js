@@ -34,10 +34,10 @@ Activity.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    // intensity: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
+    weigh_in: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,
