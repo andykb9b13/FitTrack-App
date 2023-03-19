@@ -25,6 +25,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.delete("/id", withAuth, async (req, res) => {
+  try {
+    const deletedUser = await User.destroy({
+      where: {
+        user_id: req.session.userId,
+      },
+    });
+    res.status(200).json(deletedUser);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // getting all activities, mainly for viewing in Insomnia for now
 router.get("/activities", async (req, res) => {
   const allActivities = await Activity.findAll();
