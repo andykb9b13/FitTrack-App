@@ -15,13 +15,15 @@ const addActivity = async (event) => {
   const durationEl = document.querySelector("#duration");
   const distanceEl = document.querySelector("#distance");
   const activityEl = document.querySelector("#activity");
+  const weightEl = document.querySelector("#weight");
 
   console.log(
     "These are the addActivity values from the query selector",
     durationEl.value,
     distanceEl.value,
     entryDateEl.value,
-    activityEl.value
+    activityEl.value,
+    weightEl.value,
   );
 
   // this condition isn't working
@@ -39,6 +41,7 @@ const addActivity = async (event) => {
         duration: durationEl.value,
         distance: distanceEl.value,
         activity_type: activityEl.value.toLowerCase().trim(),
+        weigh_in: weightEl.value,
       }),
       headers: { "Content-Type": "application/json" },
     });

@@ -121,6 +121,7 @@ router.post("/activity", withAuth, async (req, res) => {
       duration: req.body.duration,
       distance: req.body.distance,
       activity_type: req.body.activity_type,
+      weigh_in: req.body.weigh_in
     });
     res.status(200).json("activity created");
   } catch (err) {
@@ -199,7 +200,11 @@ router.get("/profile/id", async (req, res) => {
 //get route for all goals to view in insomnia
 router.get("/allgoals", async (req, res) => {
   try {
-    const response = await Goals.findAll();
+    const response = await Goals.findAll({
+      where: {
+        user_id: req.session.userId,
+      },
+    });;
     res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
@@ -214,6 +219,8 @@ router.post("/goals", withAuth, async (req, res) => {
       hours_of_exercise: req.body.hours_of_exercise,
       days_of_exercise: req.body.days_of_exercise,
       weightloss_goal: req.body.weightloss_goal,
+      goal_start_date: req.body.goal_start_date,
+      goal_end_date: req.body.goal_end_date,
     });
     res.status(200).json(response);
   } catch (err) {

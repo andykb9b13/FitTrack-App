@@ -2,11 +2,15 @@
   <div id="goals-display">
     <div class="row">
       <div class="col-11">
-        <h3 class="text-center">This Weeks Goals</h3>
-        <br />
-        <h4>Days of exercise: {{userData.goal.hours_of_exercise}}</h4>
-        <h4>Hours of exercise: {{userData.goal.days_of_exercise}}</h4>
-        <h3> Total Weight Loss Goal: {{userData.goal.weightloss_goal}}</h3>
+        <h2 =id"goalheader" class class="color: #132542">Goals</h2>
+        <h3 id= "goalEndsEl" class="color: #132542"></h3>
+        <p id="daysRemainingEl" class="color: #132542"></p>
+        <h4 id ="goalDayEl" class="color: #132542"></h4>
+        <p id="dayGoalProgEl" class="color: #132542"></p>
+        <h4 id="hourGoalEl" class="color: #132542"></h4>
+        <p id="hourGoalProgEl" class="color: #132542"></p>
+        <h4 id ="weightGoalEl"class="color: #132542"></h4>
+        <p id="weightProgEl" class="color: #132542"></p>
       </div>
       <div class="plus">
         <a href="/goals" class="row justify-content-end text-decoration-none" id="edit-goals">
@@ -16,3 +20,7 @@
     </div>
   </div>
 </div>
+
+<script src="/js/goalchecker.js"></script>
+
+
