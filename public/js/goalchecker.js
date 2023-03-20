@@ -4,7 +4,7 @@ let weightLossGoal;
 let hoursGoal;
 let dayGoal;
 
-// //get stored values to be used with functions
+//get stored values to be used with functions
 const userGoalArr = async () => {
   try {
     const response = await fetch("/api/user/allgoals", {
@@ -24,16 +24,12 @@ const userGoalArr = async () => {
 
       console.log("Last weightloss goal:", weightLossGoal);
 
-      document.getElementById("goalEndsEl").textContent =
-        "Your goal ends " + goalEnd;
-      document.getElementById("hourGoalEl").textContent =
-        "You set a goal of " + hoursGoal + " hours of exercise.";
-      document.getElementById("weightGoalEl").textContent =
-        "You set a goal weight of " + weightLossGoal;
-      document.getElementById("goalDayEl").textContent =
-        "You set a goal of " + dayGoal + " days of exercise.";
-      document.getElementById("hourGoalEl").textContent =
-        "You set a goal of " + hoursGoal + " hours of exercise.";
+
+      document.getElementById('goalEndsEl').textContent = "Goal ends "  +  goalEnd
+      document.getElementById('weightGoalEl').textContent = "Weight goal of " + weightLossGoal
+      document.getElementById('goalDayEl').textContent = "Days of exercise goal of " + dayGoal
+      document.getElementById('hourGoalEl').textContent = "Hours of exercise goal of " + hoursGoal
+
 
       // goalsDisplay(lastWeightLossGoal);
     } else {
@@ -44,34 +40,38 @@ const userGoalArr = async () => {
   }
 };
 
+
+//fetch user activity, filter by date range and send filtered data to function to check progress
 const userActivitiesArr = async () => {
-  try {
-    const response = await fetch("/api/graph/all", {
-      method: "GET",
-    });
-    console.log("This is the response for goalchecker activities", response);
-    const data = await response.json();
-    console.log("goal checker activity data", data);
-    const filteredData = await data.filter((item) => {
-      return item.entry_date >= goalStart && item.entry_date <= goalEnd;
-    });
+    try {
+      const response = await fetch("/api/graph/all", {
+        method: "GET",
+      });
+      console.log("This is the response for goalchecker activities", response);
+      const data = await response.json();
+      console.log("goal checker activity data", data)
+      const filteredData = await data.filter((item) => {
+        return item.entry_date >= goalStart && item.entry_date <= goalEnd;
+      });
 
-    if (filteredData.length === 0) {
-      document.getElementById("goalEndsEl").textContent =
-        "Enter your first activity to track your progress.";
-      document.getElementById("hourGoalEl").textContent = "";
-      document.getElementById("weightGoalEl").textContent = "";
-      document.getElementById("goalDayEl").textContent = "";
-      document.getElementById("hourGoalEl").textContent = "";
-      document.getElementById("hourGoalProgEl").textContent = "";
-      document.getElementById("weightProgEl").textContent = "";
-      document.getElementById("dayGoalProgEl").textContent = "";
-    } else {
-      exerciseHoursGoal(filteredData);
-      exerciseDaysGoal(filteredData);
-      weightGoal(filteredData);
+      if (filteredData.length === 0){
+        document.getElementById('goalEndsEl').textContent = "Enter your first activity to track your progress."
+        document.getElementById('hourGoalEl').textContent = ""
+        document.getElementById('weightGoalEl').textContent = ""
+        document.getElementById('goalDayEl').textContent = ""
+        document.getElementById('hourGoalEl').textContent = ""
+        document.getElementById('hourGoalProgEl').textContent = ""
+        document.getElementById('weightProgEl').textContent = ""
+        document.getElementById('dayGoalProgEl').textContent = ""
+      } else {
+        exerciseHoursGoal(filteredData);
+        exerciseDaysGoal(filteredData);
+        weightGoal(filteredData);
+      }
+      console.log("these are the filtered logs by date range", filteredData)
+    } catch (err) {
+      console.log(err);
     }
-
     console.log("these are the filtered logs by date range", filteredData);
   } catch (err) {
     console.log(err);
@@ -80,54 +80,51 @@ const userActivitiesArr = async () => {
 //call on pageload
 
 let exerciseHoursGoal = async (filteredData) => {
-  //filter exercise log array to only include log dates equal or greater than log entry dates and less than end date.
-  let activityLogs = await filteredData;
 
-  //add remaining array items and reduce to total duration.
-  const totalDuration = activityLogs.reduce((acc, log) => {
-    return acc + log.duration;
-  }, 0);
-  console.log("total hours exercise progress", totalDuration);
+    //filter exercise log array to only include log dates equal or greater than log entry dates and less than end date. 
+    let activityLogs =  filteredData;
 
-  let hoursExercised = Math.round(totalDuration / 60);
-  let hoursRemaining = hoursGoal - hoursExercised;
-  if (hoursRemaining === null) {
-    document.getElementById("hourGoalProgEl").textContent = "";
-  } else if (hoursRemaining === hoursGoal) {
-    goalStatus = "Get started on your hourly goal!";
-    document.getElementById("hourGoalProgEl").textContent = goalStatus;
-  } else if (hoursRemaining > 0) {
-    goalStatus =
-      "Not quite there. You have " +
-      hoursRemaining +
-      " hours to go! Keep working at it!";
-    document.getElementById("hourGoalProgEl").textContent = goalStatus;
-  } else {
-    goalStatus = "Awesome Job! You rocked your hourly goal!";
-    document.getElementById("hourGoalProgEl").textContent = goalStatus;
-  }
-  console.log("hours remaining", hoursRemaining);
+      //add remaining array items and reduce to total duration. 
+      const totalDuration = activityLogs.reduce((acc, log) => {
+        return acc + log.duration;
+      }, 0); 
+      console.log("total hours exercise progress", totalDuration)
+      
+      let hoursExercised = Math.round(totalDuration / 60)
+      let hoursRemaining = hoursGoal - hoursExercised
+      if (hoursRemaining === null){
+        document.getElementById('hourGoalProgEl').textContent = ""
+        } else if (hoursRemaining === hoursGoal){
+        goalStatus = "Get started on your hourly goal!"
+        document.getElementById('hourGoalProgEl').textContent = goalStatus
+      } else if (hoursRemaining >  0){
+        goalStatus = "You have " + hoursRemaining + " hours to go! Keep working at it!"
+        document.getElementById('hourGoalProgEl').textContent = goalStatus
+      } else {
+        goalStatus = "Awesome Job! You rocked your hourly goal!"
+        document.getElementById('hourGoalProgEl').textContent = goalStatus
+      }
+      console.log("hours remaining", hoursRemaining)
 };
 
-// //TODO update element targets for text output
-let exerciseDaysGoal = (filteredData) => {
-  const goalEntriesCount = filteredData.length;
+//filter exercise log array to only include log dates equal or greater than log entry dates and less than end date.
+let exerciseDaysGoal = async (filteredData) => {
+ 
+    const goalEntriesCount =  filteredData.length;
 
-  let goalDaysRemaining = dayGoal - goalEntriesCount;
+    let goalDaysRemaining = dayGoal - goalEntriesCount
 
-  if (goalDaysRemaining === dayGoal) {
-    goalStatus = "Get started on your days exercised goal!";
-    document.getElementById("dayGoalProgEl").textContent = goalStatus;
-  } else if (goalDaysRemaining > 0) {
-    goalStatus =
-      "Not quite there. You have " +
-      goalDaysRemaining +
-      " days to go! Keep working at it!";
-    document.getElementById("dayGoalProgEl").textContent = goalStatus;
-  } else {
-    goalStatus = "Awesome Job! You rocked your days exercised goal!";
-    document.getElementById("dayGoalProgEl").textContent = goalStatus;
-  }
+    if (goalDaysRemaining === dayGoal){
+      goalStatus = "Get started on your days exercised goal!"
+      document.getElementById('dayGoalProgEl').textContent = goalStatus
+    } else if (goalDaysRemaining >  0){
+      goalStatus = "You have " + goalDaysRemaining + " days to go! Keep working at it!"
+      document.getElementById('dayGoalProgEl').textContent = goalStatus
+    } else {
+      goalStatus = "Awesome Job! You rocked your days exercised goal!"
+      document.getElementById('dayGoalProgEl').textContent = goalStatus
+    }
+
 };
 
 let weightGoal = (filteredData) => {
@@ -150,5 +147,16 @@ let weightGoal = (filteredData) => {
   }
 };
 
-userGoalArr();
-userActivitiesArr();
+    if (weightRemaining > 0 ){
+      goalStatus = "You have " + weightRemaining + " lbs to go. Keep up the hard work!"
+      document.getElementById('weightProgEl').textContent = goalStatus
+    } else {
+      goalStatus = goalStatus = "Awesome Job! You rocked your weight loss goal!"
+      document.getElementById('weightProgEl').textContent = goalStatus
+    }
+  };
+
+
+
+  userGoalArr();
+  userActivitiesArr();
