@@ -4,10 +4,7 @@ let weightLossGoal;
 let hoursGoal;
 let dayGoal;
 
-document.addEventListener("DOMContentLoaded", function() {
-  userGoalArr();
-  userActivitiesArr();
-});
+
 
 
 // //get stored values to be used with functions
@@ -30,11 +27,10 @@ const userGoalArr = async () => {
 
       console.log("Last weightloss goal:", weightLossGoal);
 
-      document.getElementById('goalEndsEl').textContent = "Your goal ends " +  goalEnd
-      document.getElementById('hourGoalEl').textContent = "You set a goal of " + hoursGoal + " hours of exercise."
-      document.getElementById('weightGoalEl').textContent = "You set a goal weight of " + weightLossGoal
-      document.getElementById('goalDayEl').textContent = "You set a goal of " + dayGoal + " days of exercise."
-      document.getElementById('hourGoalEl').textContent = "You set a goal of " + hoursGoal + " hours of exercise."
+      document.getElementById('goalEndsEl').textContent = "Goal ends "  +  goalEnd
+      document.getElementById('weightGoalEl').textContent = "Weight goal of " + weightLossGoal
+      document.getElementById('goalDayEl').textContent = "Days of exercise goal of " + dayGoal
+      document.getElementById('hourGoalEl').textContent = "Hours of exercise goal of " + hoursGoal
 
       // goalsDisplay(lastWeightLossGoal);
 
@@ -47,7 +43,7 @@ const userGoalArr = async () => {
   }
 };
 
-
+//fetch user activity, filter by date range and send filtered data to function to check progress
 const userActivitiesArr = async () => {
     try {
       const response = await fetch("/api/graph/all", {
@@ -56,7 +52,7 @@ const userActivitiesArr = async () => {
       console.log("This is the response for goalchecker activities", response);
       const data = await response.json();
       console.log("goal checker activity data", data)
-      const filteredData = data.filter((item) => {
+      const filteredData = await data.filter((item) => {
         return item.entry_date >= goalStart && item.entry_date <= goalEnd;
       });
 
@@ -85,9 +81,9 @@ const userActivitiesArr = async () => {
 //call on pageload
 
 
-let exerciseHoursGoal = (filteredData) => {
+let exerciseHoursGoal = async (filteredData) => {
     //filter exercise log array to only include log dates equal or greater than log entry dates and less than end date. 
-    let activityLogs = filteredData;
+    let activityLogs =  filteredData;
 
       //add remaining array items and reduce to total duration. 
       const totalDuration = activityLogs.reduce((acc, log) => {
@@ -103,7 +99,7 @@ let exerciseHoursGoal = (filteredData) => {
         goalStatus = "Get started on your hourly goal!"
         document.getElementById('hourGoalProgEl').textContent = goalStatus
       } else if (hoursRemaining >  0){
-        goalStatus = "Not quite there. You have " + hoursRemaining + " hours to go! Keep working at it!"
+        goalStatus = "You have " + hoursRemaining + " hours to go! Keep working at it!"
         document.getElementById('hourGoalProgEl').textContent = goalStatus
       } else {
         goalStatus = "Awesome Job! You rocked your hourly goal!"
@@ -112,10 +108,10 @@ let exerciseHoursGoal = (filteredData) => {
       console.log("hours remaining", hoursRemaining)
 };
 
-// //TODO update element targets for text output
-let exerciseDaysGoal = (filteredData) => {
+
+let exerciseDaysGoal = async (filteredData) => {
  
-    const goalEntriesCount = filteredData.length;
+    const goalEntriesCount =  filteredData.length;
 
     let goalDaysRemaining = dayGoal - goalEntriesCount
 
@@ -123,7 +119,7 @@ let exerciseDaysGoal = (filteredData) => {
       goalStatus = "Get started on your days exercised goal!"
       document.getElementById('dayGoalProgEl').textContent = goalStatus
     } else if (goalDaysRemaining >  0){
-      goalStatus = "Not quite there. You have " + goalDaysRemaining + " days to go! Keep working at it!"
+      goalStatus = "You have " + goalDaysRemaining + " days to go! Keep working at it!"
       document.getElementById('dayGoalProgEl').textContent = goalStatus
     } else {
       goalStatus = "Awesome Job! You rocked your days exercised goal!"
@@ -141,10 +137,15 @@ let weightGoal = (filteredData) => {
     let weightRemaining = lastWeightIn - weightLossGoal
 
     if (weightRemaining > 0 ){
-      goalStatus = "Not quite there but great progress! You have " + weightRemaining + " lbs to go. Keep up the hard work!"
+      goalStatus = "You have " + weightRemaining + " lbs to go. Keep up the hard work!"
       document.getElementById('weightProgEl').textContent = goalStatus
     } else {
       goalStatus = goalStatus = "Awesome Job! You rocked your weight loss goal!"
       document.getElementById('weightProgEl').textContent = goalStatus
     }
   };
+
+
+
+  userGoalArr();
+  userActivitiesArr();

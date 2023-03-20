@@ -9,7 +9,9 @@
 h1 {
   text-align: center;
 }
-
+p {
+  line-height: .75;
+}
 /* Navbar Styling */
 .navbar-brand img {
   height: 50px;
@@ -19,6 +21,7 @@ h1 {
 
 body {
   background-color: var(--color-2);
+  font-family: 'Avenir Next LT Pro', sans-serif;
 }
 
 /* User Information Pages Styling */
@@ -123,7 +126,9 @@ body {
   box-shadow: 0 0 5px var(--color-1);
 }
 
-
+.profile-goals-display{ 
+  line-height: 1;
+}
 /* Edit Profile Styling */
 .cust-tag {
   border-radius: 20px 0 0 20px;
@@ -144,7 +149,7 @@ body {
 
 /* Weekly Goals */
 .max-goals {
-  max-width: 600px;
+  max-width: 500px;
 }
 
 .plus {
@@ -161,4 +166,12 @@ body {
 
 .activity-input {
   border-radius: 0 0 20px 20px;
+}
+
+#center-logo {
+  width: 15%;
+}
+
+#logoutBtn {
+ height: 50%;
 }
