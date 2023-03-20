@@ -82,10 +82,6 @@ const userActivitiesArr = async () => {
   }
 };
 //call on pageload
-<<<<<<< HEAD
-=======
-
->>>>>>> 1d0a358c77fb6d44d5cd570bfe06cdd2b31436e1
 let exerciseHoursGoal = async (filteredData) => {
 
 
@@ -145,32 +141,6 @@ let weightGoal = (filteredData) => {
   console.log("recent weight: ", lastWeightIn);
 
   let weightRemaining = lastWeightIn - weightLossGoal;
-<<<<<<< HEAD
-=======
-
-  if (weightRemaining > 0) {
-    goalStatus =
-      "Not quite there but great progress! You have " +
-      weightRemaining +
-      " lbs to go. Keep up the hard work!";
-    document.getElementById("weightProgEl").textContent = goalStatus;
-  } else {
-    goalStatus = goalStatus = "Awesome Job! You rocked your weight loss goal!";
-    document.getElementById("weightProgEl").textContent = goalStatus;
-  }
-};
-
-    if (weightRemaining > 0 ){
-      goalStatus = "You have " + weightRemaining + " lbs to go. Keep up the hard work!"
-      document.getElementById('weightProgEl').textContent = goalStatus
-    } else {
-      goalStatus = goalStatus = "Awesome Job! You rocked your weight loss goal!"
-      document.getElementById('weightProgEl').textContent = goalStatus
-    }
-  };
-
-
->>>>>>> 1d0a358c77fb6d44d5cd570bfe06cdd2b31436e1
 
   if (weightRemaining > 0) {
     goalStatus =
