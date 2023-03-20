@@ -95,7 +95,7 @@ body {
 }
 
 /* Button Styling */
-.btn-primary {
+.btn-primary, #upload_widget {
   border: none;
   border-radius: 20px;
   background-color: var(--color-3);
@@ -103,7 +103,7 @@ body {
   margin-left: 10px;
 }
 
-.btn-primary:hover{
+.btn-primary:hover, #upload_widget:hover{
   color: black;
   background-color: var(--color-1);
   box-shadow: 0 0 5px var(--color-1);
@@ -120,7 +120,8 @@ body {
 #swimmingBtn:focus, #swimmingBtn:active,
 #bikingBtn:focus, #bikingBtn:active,
 #savegoals:focus, #savegoals:active,
-#cancelBtn:focus, #cancelBtn:active{
+#cancelBtn:focus, #cancelBtn:active,
+#upload_widget:focus, #upload_widget:active{
   color: black;
   background-color: var(--color-1);
   box-shadow: 0 0 5px var(--color-1);
@@ -153,7 +154,8 @@ body {
 }
 
 .plus {
-  margin-top: -45px;
+  margin-top: -33px;
+  margin-right: 8px;
 }
 
 /* Activity Log Styling */
