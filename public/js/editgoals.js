@@ -1,16 +1,15 @@
-let goalStart = dayjs().format('YYYY-MM-DD')
-
+let goalStart = dayjs().format("YYYY-MM-DD");
 
 const saveGoalsForm = async function (event) {
-  console.log("are we inside?")
-    event.preventDefault();
-  
-    const totalHoursEl = document.querySelector("#total-hours");
-    const daysOfExerciseEl = document.querySelector("#days-of-exercise");
-    const targetweightEl = document.querySelector("#target-weight");
-    const goalEndEl = document.querySelector("#goal-end-date")
+  console.log("are we inside?");
+  event.preventDefault();
 
-    try {
+  const totalHoursEl = document.querySelector("#total-hours");
+  const daysOfExerciseEl = document.querySelector("#days-of-exercise");
+  const targetweightEl = document.querySelector("#target-weight");
+  const goalEndEl = document.querySelector("#goal-end-date");
+
+  try {
     const response = await fetch("/api/user/goals", {
       method: "POST",
       body: JSON.stringify({
@@ -23,9 +22,9 @@ const saveGoalsForm = async function (event) {
       headers: { "Content-Type": "application/json" },
     });
     console.log("goals response", response);
-  
+
     if (response.ok) {
-      document.location.replace("/goals");
+      document.location.replace("/profile");
       alert("Goals updated!");
     } else {
       alert("Failed to update profile.");
@@ -43,4 +42,3 @@ const profileRedirect = async (event) => {
 document.querySelector("#savegoals").addEventListener("click", saveGoalsForm);
 
 document.querySelector("#cancelBtn").addEventListener("click", profileRedirect);
-
