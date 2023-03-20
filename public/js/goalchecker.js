@@ -4,10 +4,7 @@ let weightLossGoal;
 let hoursGoal;
 let dayGoal;
 
-
-
-
-// //get stored values to be used with functions
+//get stored values to be used with functions
 const userGoalArr = async () => {
   try {
     const response = await fetch("/api/user/allgoals", {
@@ -27,14 +24,14 @@ const userGoalArr = async () => {
 
       console.log("Last weightloss goal:", weightLossGoal);
 
+
       document.getElementById('goalEndsEl').textContent = "Goal ends "  +  goalEnd
       document.getElementById('weightGoalEl').textContent = "Weight goal of " + weightLossGoal
       document.getElementById('goalDayEl').textContent = "Days of exercise goal of " + dayGoal
       document.getElementById('hourGoalEl').textContent = "Hours of exercise goal of " + hoursGoal
 
+
       // goalsDisplay(lastWeightLossGoal);
-
-
     } else {
       console.log("The data array is empty or undefined.");
     }
@@ -42,6 +39,7 @@ const userGoalArr = async () => {
     console.log(err);
   }
 };
+
 
 //fetch user activity, filter by date range and send filtered data to function to check progress
 const userActivitiesArr = async () => {
@@ -69,19 +67,20 @@ const userActivitiesArr = async () => {
         exerciseHoursGoal(filteredData);
         exerciseDaysGoal(filteredData);
         weightGoal(filteredData);
-      
       }
-
       console.log("these are the filtered logs by date range", filteredData)
-
     } catch (err) {
       console.log(err);
     }
-  };
+    console.log("these are the filtered logs by date range", filteredData);
+  } catch (err) {
+    console.log(err);
+  }
+};
 //call on pageload
 
-
 let exerciseHoursGoal = async (filteredData) => {
+
     //filter exercise log array to only include log dates equal or greater than log entry dates and less than end date. 
     let activityLogs =  filteredData;
 
@@ -108,7 +107,7 @@ let exerciseHoursGoal = async (filteredData) => {
       console.log("hours remaining", hoursRemaining)
 };
 
-
+//filter exercise log array to only include log dates equal or greater than log entry dates and less than end date.
 let exerciseDaysGoal = async (filteredData) => {
  
     const goalEntriesCount =  filteredData.length;
@@ -125,16 +124,28 @@ let exerciseDaysGoal = async (filteredData) => {
       goalStatus = "Awesome Job! You rocked your days exercised goal!"
       document.getElementById('dayGoalProgEl').textContent = goalStatus
     }
-};
 
+};
 
 let weightGoal = (filteredData) => {
   let lastItem = filteredData[filteredData.length - 1];
   let lastWeightIn = lastItem.weigh_in;
-  
+
   console.log("recent weight: ", lastWeightIn);
 
-    let weightRemaining = lastWeightIn - weightLossGoal
+  let weightRemaining = lastWeightIn - weightLossGoal;
+
+  if (weightRemaining > 0) {
+    goalStatus =
+      "Not quite there but great progress! You have " +
+      weightRemaining +
+      " lbs to go. Keep up the hard work!";
+    document.getElementById("weightProgEl").textContent = goalStatus;
+  } else {
+    goalStatus = goalStatus = "Awesome Job! You rocked your weight loss goal!";
+    document.getElementById("weightProgEl").textContent = goalStatus;
+  }
+};
 
     if (weightRemaining > 0 ){
       goalStatus = "You have " + weightRemaining + " lbs to go. Keep up the hard work!"
