@@ -2,7 +2,7 @@
   "name": "group4-project",
   "version": "1.0.0",
   "description": "An amazing app that will blow your socks off!",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
