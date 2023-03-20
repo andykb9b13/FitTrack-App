@@ -19,45 +19,56 @@
   [License](#license)
 
   ## Description
-  This app is created to be a fitness companion and track your progress over time.
+  This app is created to be of use for someone who wants to work on themselves physically and hit their goals! It is set up using SQL databases and ChartJs to log the data for a persons journey. Cloudinary and Bootstrap are used to display the app to the user.
   
   ## Installation
-  Download and install the dependencies
+  Download the app from Github and install the necessary NPM packages.
+  
+  To get started you'll have to make sure to create your database with SQL and seed it using NodeJS.
+  
+  Once your database is set up you'll just want to start up npm and you should be good to use the app!
 
   ## Dependencies
-  "chart.js": "^4.2.1",
+  bcrypt: ^5.1.0
   
-  "connect-session-sequelize": "^7.1.5",
+  bootstrap: ^5.3.0
   
-  "dotenv": "^16.0.3",
+  chart.js: ^4.2.1
   
-  "express": "^4.18.2",
+  cloudinary: ^1.35.0
   
-  "express-handlebars": "^7.0.1",
+  connect-session-sequelize": ^7.1.5
   
-  "express-session": "^1.17.3",
+  dotenv: ^16.0.3
   
-  "mysql2": "^3.2.0",
+  express: ^4.18.2
   
-  "sequelize": "^6.29.1"
+  express-handlebars: ^7.0.1
+  
+  express-session: ^1.17.3
+  
+  mysql2: ^3.2.0
+  
+  sequelize: ^6.29.1
   
   ## Usage
-  User will create their profile and input their initial metrics for fitness/health level (Weight, Height, etc).
+  On the landing page a user will be prompted to either login or sign up.
   
-  User will set goals to be tracked by the app, which will compared against the user input.
+  When signing up a user will be prompted to add an email, their name and password.
   
-  User data will be displayed in charts, using Chart.js.
+  After signing in the user will be show their profile where they can edit their profile, goals and log activities.
   
-  ## Visual Representation
-  ![homepage_720](https://user-images.githubusercontent.com/118003612/223890109-959b7f5f-b4b9-464c-97d4-9e15aa0c3173.png)
-  ![user-profile_720](https://user-images.githubusercontent.com/118003612/223890208-6e88c772-93c5-4029-818f-b6fb8a115f53.png)
-  ![data-input_720](https://user-images.githubusercontent.com/118003612/223890214-c2354ad5-2702-4a2f-9e21-4a286223e00c.png)
+  When editing your profile you'll be able to upload a profile picture and set your basic information.
+  
+  When adding goals to your profile you'll be able to set a goal for a certain time period and what your target weight is.
+  
+  When logging your activity you'll be able to enter in the activity you did and the duration / distance done.
   
   ## Questions
   Contact us at any of our GitHub accounts or email us!
 
   ## Credits
-  Aaron Kelsey, Alex Barrett, Alexis Serna, Andy Kleindienst, Kristina Senters, Michael Benjamin
+  Aaron Kelsey, Alex Barrett, Alexis Serna, Andy Kleindienst
 
   ## License
-    This project is licensed under the MIT License - Click the button for more information.
+  This project is licensed under the MIT License - Click the button for more information.

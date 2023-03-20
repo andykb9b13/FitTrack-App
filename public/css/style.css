@@ -10,7 +10,7 @@ h1 {
   text-align: center;
 }
 p {
-  line-height: .75;
+  line-height: 1.25;
 }
 /* Navbar Styling */
 .navbar-brand img {
@@ -169,9 +169,9 @@ body {
 }
 
 #center-logo {
-  width: 15%;
+  width: 12%;
 }
 
 #logoutBtn {
- height: 50%;
+ width: 50px%;
 }
