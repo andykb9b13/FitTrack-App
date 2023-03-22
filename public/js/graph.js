@@ -1,6 +1,5 @@
 const ctx = document.getElementById("activityGraph").getContext("2d");
-// const second = document.getElementById("secondChart");
-// const third = document.getElementById("thirdChart");
+
 let activityChart = new Chart(ctx, {
   type: "bar",
   data: {
@@ -73,10 +72,6 @@ const activityData = async (userData) => {
           },
         },
         x: {
-          // type: "time",
-          // time: {
-          //   unit: "day",
-          // },
           title: {
             display: true,
             text: "Date (YYYY/MM/DD)",
@@ -95,7 +90,6 @@ const activityData = async (userData) => {
 
 getActivities();
 
-// TODO can I combine the three routes to use string literal to input a parameter into the http request?
 const getRunningData = async () => {
   try {
     const response = await fetch("/api/graph/running", {

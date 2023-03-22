@@ -62,7 +62,6 @@ router.post("/", async (req, res) => {
 
       res.json(newUser);
     });
-    // res.status(200).json(newUser);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -121,7 +120,7 @@ router.post("/activity", withAuth, async (req, res) => {
       duration: req.body.duration,
       distance: req.body.distance,
       activity_type: req.body.activity_type,
-      weigh_in: req.body.weigh_in
+      weigh_in: req.body.weigh_in,
     });
     res.status(200).json("activity created");
   } catch (err) {
@@ -171,6 +170,7 @@ router.put("/editprofile", withAuth, async (req, res) => {
   }
 });
 
+// deleting a profile
 router.delete("/editprofile", withAuth, async (req, res) => {
   try {
     const response = await Profile.destroy({
@@ -184,6 +184,7 @@ router.delete("/editprofile", withAuth, async (req, res) => {
   }
 });
 
+// finding a profile by a specific user_id
 router.get("/profile/id", async (req, res) => {
   try {
     const profile = await Profile.findOne({
@@ -204,7 +205,7 @@ router.get("/allgoals", async (req, res) => {
       where: {
         user_id: req.session.userId,
       },
-    });;
+    });
     res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
@@ -228,6 +229,7 @@ router.post("/goals", withAuth, async (req, res) => {
   }
 });
 
+// editing the user's goals
 router.put("/goals", withAuth, async (req, res) => {
   try {
     const response = await Goals.update(req.body, {
@@ -241,6 +243,7 @@ router.put("/goals", withAuth, async (req, res) => {
   }
 });
 
+// finding a set of goals for a particular user
 router.get("/goals/id", async (req, res) => {
   try {
     const goals = await Goals.findOne({
