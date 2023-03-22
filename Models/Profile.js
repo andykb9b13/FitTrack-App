@@ -28,10 +28,6 @@ Profile.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    // fitness_level: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
   },
   {
     sequelize,

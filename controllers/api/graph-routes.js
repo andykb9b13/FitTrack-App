@@ -17,7 +17,6 @@ router.get("/all", async (req, res) => {
   }
 });
 
-// TODO can I turn these three routes into one "/:activity" route?
 // getting array of running activities ONLY
 router.get("/running", async (req, res) => {
   try {

@@ -4,6 +4,7 @@ const Profile = require("../Models/Profile");
 const withAuth = require("../utils/auth");
 const Goals = require("../Models/Goals");
 
+// going to the landing page
 router.get("/", async (req, res) => {
   try {
     res.render("landingpage");
@@ -26,7 +27,6 @@ router.get("/profile", withAuth, async (req, res) => {
     console.log("this is the user", user);
     const userData = user.get({ plain: true });
     console.log("This is USERDATA", userData);
-    // We should get the activity data here maybe and send it to the frontend js?
     res.render("profilecard", { userData });
   } catch (err) {
     console.log("here is profile error", err);
@@ -61,6 +61,7 @@ router.get("/login", async (req, res) => {
   }
 });
 
+// hitting the edit profile page
 router.get("/edit", withAuth, async (req, res) => {
   try {
     res.status(200).render("editprofile");
@@ -69,6 +70,7 @@ router.get("/edit", withAuth, async (req, res) => {
   }
 });
 
+// hitting the goals page
 router.get("/goals", withAuth, async (req, res) => {
   try {
     res.render("goalslog");
